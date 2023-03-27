@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWH</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js"></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.5/css/swiper.min.css"/>
+
+    <script type="text/javascript" src="./js/nav.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/nva.css">
+    <link rel="stylesheet" type="text/css" href="./css/mySwiper.css" />
+    <link rel="stylesheet" type="text/css" href="./css/code.css" />
+
+</head>
+<body>
+    <header id="header">
+        <div class="main_nav">
+            <div class="container">
+                <div class="mobile-toggle"> <span></span> <span></span> <span></span> </div>
+                <nav>
+                <ul>
+                    <li><a class="smoothscroll" href="#header">顶部</a></li>
+                    <li><a class="smoothscroll" href="#introduce">介绍</a></li>
+                    <li><a class="smoothscroll" href="#json">json格式解读</a></li>
+                    <li><a class="smoothscroll" href="#ol">openlayers体验</a></li>
+                    <li><a class="smoothscroll" href="#others">技术介绍</a></li>
+                </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="title">
+            <div>
+                <model-viewer camera-controls alt="Model" src="./imgs/太阳.glb"  style="left: 24%;">
+                </model-viewer>
+            </div>
+            <div class="smallsep heading"></div>
+            <h1 class="heading">段文豪个人主页</h1>
+            <h2 class="heading">互联网与移动GIS开发的实习任务一</h2>
+            <a class="smoothscroll" href="#about">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+            </a> 
+        </div>
+        <a class="smoothscroll" href="#about">
+            <div class="scroll-down"></div>
+        </a> 
+    </header>
+    <section id="introduce" style="height: 600px; background-image:  linear-gradient(147deg, #fda085 36%, #fe7039 74%)">
+        <div class="container">
+            <div class="row">
+                <h3>个人介绍</h3>
+                <div>
+                    <div class="blog-slider">
+                        <div class="blog-slider__wrp swiper-wrapper">
+                            <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                              <img
+                                src="./imgs/夕阳.JPG"
+                                alt=""
+                              />
+                            </div>
+                            <div class="blog-slider__content">
+                              <span class="blog-slider__code">No.1</span>
+                              <div class="blog-slider__title">段文豪</div>
+                              <div class="blog-slider__text">
+                                我是中国地质大学(武汉)地理与信息工程学院地理空间信息工程专业的一名学生
+                              </div>
+                            <a href="https://www.zhihu.com/people/wen-hao-55-89" class="blog-slider__button">知乎主页</a>
+                            </div>
+                            </div>
+                            <div class="blog-slider__item swiper-slide">
+                            <div class="blog-slider__img">
+                            <img
+                                src="./imgs/life.JPG"
+                                alt=""
+                            />
+                            </div>
+                            <div class="blog-slider__content">
+                            <span class="blog-slider__code">No.2</span>
+                            <div class="blog-slider__title">专业学习</div>
+                            <div class="blog-slider__text">
+                                <ul>
+                                <li>前端学习:VUE、OpenLayers、MapBox都有接触</li>
+                                <li>前端后续学习:学习UI设计、接触三维GIS、了解WebGL原理(WebGL的动画渲染比Canvs好看!)</li>
+                                <li>后端学习:之前比赛没有负责后端，是用flask写的，所以准备从flask入手后续转SpringBoot</li>
+                                <li>深度学习:刚入门，加入炼丹之旅</li>
+                                </ul>
+                            </div>
+                            <a href="https://github.com/dwh553321494" class="blog-slider__button">GitHub主页</a>
+                            </div>
+                            </div>
+                            <div class="blog-slider__item swiper-slide">
+                                <div class="blog-slider__img">
+                                <img
+                                    src="./imgs/good.JPG"
+                                    alt=""
+                                />
+                                </div>
+                                <div class="blog-slider__content">
+                                <span class="blog-slider__code">No.3</span>
+                                <div class="blog-slider__title">未来打算</div>
+                                <div class="blog-slider__text">
+                                    目前希望可以顺利升学！<br>
+                                    以后会多花心思在DL上，期待遥感GPT的早日到来！
+                                </div>
+                                </div>
+                                </div>
+                        <div class="blog-slider__pagination"></div>
+                      </div>
+
+                    <script type="text/javascript" src="./js/mySwiper.js"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="json" style="height: 650px;background: #fad0c4 100%;">
+        <div class="container">
+            <div class="row">
+                <h3>json格式解读</h3>
+                <div>
+                    <p>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用完全独立于语言的文本格式，但是也使用了类似于C语言家族的习惯(包括C, C++, C#, Java, JavaScript, Perl, Python等)。 这些特性使JSON成为理想的数据交换语言。</p>
+                    <div>
+                        <div id="kapsa">
+                            <div id="ust">
+                                <h4 id="baslik" style="font-size: 2.4rem;">JSON格式示例</h4>
+                                <div id="islem">
+                                    <div id="y"></div>
+                                    <div id="s"></div>
+                                    <div id="k"></div>
+                                </div>
+                                <div class="temizle"></div>
+                            </div>
+                            
+                        </div>
+                        <div id="orta">
+                            <div id="no">
+                                <span class="numara">1</span>
+                                <span class="numara">2</span>
+                                <span class="numara">3</span>
+                                <span class="numara">4</span>
+                                <span class="numara">5</span>
+                                <span class="numara">6</span>
+                                <span class="numara">7</span>
+                                <span class="numara">8</span>
+                                <span class="numara">9</span>
+                                <span class="numara">10</span>
+                            </div>
+                            <div id="satir">
+                                <span class="yorum">
+                                    /*<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;这是一个JSON格式展示<br>
+                                    */
+                                </span>
+                                <br>
+                                <span class="beyaz">{</span>
+                                <br>
+                                <span class="secici">&nbsp;&nbsp;&nbsp;&nbsp;"姓名":</span><span class="ozellik">&nbsp;"段文豪"</span><span class="beyaz">,</span>
+                                <br>
+                                <span class="secici">&nbsp;&nbsp;&nbsp;&nbsp;"性别":</span><span class="ozellik">&nbsp;"男"</span><span class="beyaz">,</span>
+                                <br>
+                                <span class="secici">&nbsp;&nbsp;&nbsp;&nbsp;"年龄":</span><span class="ozellik">&nbsp;"20"</span><span class="beyaz">,</span>
+                                <br>
+                                <span class="secici">&nbsp;&nbsp;&nbsp;&nbsp;"爱好":</span><span class="ozellik">&nbsp;"ctrl"</span><span class="beyaz">,</span>
+                                <br>
+                                <span class="beyaz">}</span>
+                                    
+                                <div class="temizle"></div>
+                            </div>
+                            <div id="alt">
+                                &copy; <a href="https://codepen.io/codery">Yasin Softaoğlu</a>
+                            </div>
+                        </div>
+                    </div>
+                    <p>在前后端的交互过程中，一些数据的传输通常就是用JSON格式。利用ajax发送请求，数据间的传输就利用JSON，方便快速处理response。并在VUE中可以利用axios这一基于Promise的网络请求库，使用起来更简单，提供了易于扩展的接口。</p>
+                </div>
+            </div>
+        </div>
+    </section>    
+    <section id="ol" style="height: 700px; background-image: linear-gradient(120deg, #b788f4 0%, #abc7ee 80%);;">
+        <div class="container">
+            <div class="row">
+                <h3>openlayers体验</h3>
+                <div style="position:absolute;background-color: white;width: 100%;height: 400px;border-radius: 20px;">
+                    <div style="float: left;border-radius: 20px;">   
+                        <iframe src="./test.html" frameborder="no" style="width: 500px;height: 400px;margin: 0;border-radius: 20px;"></iframe>
+                    </div>
+                    <div>   
+                        <h4 style="text-align: center;" class="text-gradient">天地图</h4>
+                        <p style="font-size: initial;">天地图的地名都是根据全国地名标准化技术委员会的资料来的，其权威性和准确性，百度和谷歌是无法比拟的。<br><br>
+                        天地图是谁在做？<strong>国家测绘地理信息局</strong>。</p><br><br>
+                        <h4 style="text-align: center;" class="text-gradient">openlayers</h4>
+                        <p style="font-size: initial;">很好用的WebGIS库！！！可以做很多很多东西，最新版本也更新了WebGL的一些新属性，开始支持GLSL语法。</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <section id="others" style="height:1000px; background: #b4c3e7;">
+        <div class="container">
+            <div class="row">
+                <h3>技术介绍</h3>
+                <div>   
+                    <div class="row">
+                        <div class="six columns">
+                            <h3><img src="./imgs/TweenMax.svg" width="100px" height="100px" style="vertical-align:middle;">TweenMax</h3>
+                            <p style="font-size: initial;">
+                                TweenMax作为动画库，完成了本次设计的大部分动画(除了Swiper之外的所有动画均有TweenMax实现)。之间有了解的一个动画库是<a href="https://animate.style/">Animate.css</a>，这个插件封装的的确很好，但在做一些缓动方面的动画，它也有一定的不足之处。<br><br>
+                                TweenMax动画库的官方网址: <a href="http://greensock.com/timelinemax">http://greensock.com/timelinemax</a> 
+                            </p>
+                        </div>
+                        <div class="six columns">
+                           
+                            <h3> <model-viewer camera-controls alt="Model" src="./imgs/tool.glb"  style="vertical-align:middle;width: 100px;height: 100px;"> </model-viewer>model-viewer</h3>
+                            <p style="font-size: initial;">
+                                Easily display interactive 3D models on the web & in AR.<br><br>
+                                开头的小太阳和这里的箭头均是一个小三维模型！<br><br>
+                                github网址: <a href="https://github.com/google/model-viewer">https://github.com/google/model-viewer</a>
+                            </p><br><br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="six columns">
+                            <h3><img src="./imgs/swiper.jpg" width="50px" height="50px" style="vertical-align:middle;">Swiper</h3>
+                            <p>
+                                Swiper is the most modern free mobile touch slider with hardware accelerated transitions and amazing native behavior. It is intended to be used in mobile websites, mobile web apps, and mobile native/hybrid apps.<br><br>
+                                It is a modern touch slider which is focused only on modern apps/platforms to bring the best experience and simplicity.
+                                <br><br>
+                                Swiper, along with other great components, is a part of Framework7 - a fully-featured framework for building iOS & Android apps. Swiper is also a default slider component in the Ionic Framework.
+                                <br>
+                                <a href="https://swiperjs.com/">https://swiperjs.com/</a>
+                            </p>
+                        </div>
+                        <div class="six columns">
+                            <h3><img src="./imgs/jquery.png" width="50px" height="50px" style="vertical-align:middle;">jquery</h3>
+                            <p>
+                                jQuery is a fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript.
+                                <br><br>
+                                website: <a href="https://jquery.com/">https://jquery.com/</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>  
+    <footer>
+
+        <p style="float: right;">本次实习参考网站：codepen;在今后的学习中会多总结多思考多创造</p>
+      </footer>
+</body>
+

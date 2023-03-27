@@ -1,0 +1,149 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300italic,500,700);
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.code {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.temizle {
+    clear: both;
+}
+
+#kapsa {
+    width: 100%;
+    /* max-width: 800px; */
+    margin: 15px auto auto auto;
+    opacity: 0.9;
+}
+
+#ust {
+    width:100%;
+    background: #CEF3DD;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 15px 15px 0 0;
+    padding-right: 10px;
+    padding-left: 14px;
+}
+
+#baslik {
+    display: inline-block;
+    color: darkslategrey;
+}
+
+#islem {
+    float: right;
+}
+
+#y {
+    background: #03d544;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+#s {
+    background: #ffbe03;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+#k {
+    background: #ff4545;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    display: inline-block;
+    margin: 0 2px;
+    cursor: pointer;
+}
+/* Orta Kısım */
+
+#no {
+    width: 41px;
+    background: #263238;
+    text-align: right;
+    padding: 7px 10px 7px 0;
+    float: left;
+    color: #cdd3de;
+}
+
+.numara {
+    display: block;
+}
+
+#satir {
+    background: #1B2225;
+    color: #cdd3de;
+    display: inline-block;
+    padding: 7px 10px;
+    width: calc(100% - 41px);
+}
+
+.yorum {
+    color: #98A8B5;
+    font-weight: 400;
+    display: block;
+}
+
+.yorum a {
+    text-decoration: none;
+    border-bottom: 1px dotted;
+    color: aquamarine;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.cl {
+    color: #8EDCF5;
+}
+
+.id {
+    color: #F3A5F7;
+}
+
+.beyaz {
+    color: #cccccc;
+}
+
+.secici {
+    color: #CDFF8E;
+}
+
+.ozellik {
+    color: #FFFFFF;
+}
+
+.onemli {
+    color: #FFA9A9;
+    font-style: italic;
+}
+
+#alt {
+    background: #CEF3DD;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 0 0 15px 15px;
+    padding-right: 10px;
+    text-align: center;
+}
+
+#alt a {
+    margin-left: 5px;
+    border-bottom: 1px dotted;
+    text-decoration: none;
+    color: #213738;
+}

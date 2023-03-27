@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>互联网与移动GIS开发任务作业</title>
+		<meta name="keywords" content="fullscreen layout, boxes, responsive, page transitions, css transitions, jquery, portfolio, template" />
+		<meta name="author" content="DWH YPC ZZY ZBB" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+		
+	</head>
+	<body>
+		<div class="container">	
+			<div id="bl-main" class="bl-main">
+				<section id="bl-work-section">
+					<div class="bl-box">
+						<!-- <h2 class="bl-icon bl-icon-works">Works</h2> -->
+						
+						<h2><img src="./images/1.png"><br>Task1</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Task1</h2>
+						<p>以json格式记录小组成员信息, 设计静态网页，介绍自己小组</p>
+						<ul id="bl-work-items">
+							<li data-panel="panel-1"><a href="#"><img src="images/DWH.png" width="400" height="400" /></a><div class="group-name">段文豪</div></li>
+							<li data-panel="panel-2"><a href="#"><img src="images/YPC.png" width="400" height="400" /></a><div class="group-name">殷鹏成</div></li>
+							<li data-panel="panel-3"><a href="#"><img src="images/ZZY.png" width="400" height="400" /></a><div class="group-name">张梓元</div></li>
+							<li data-panel="panel-4"><a href="#"><img src="images/ZBB.jpg" width="400" height="400" /></a><div class="group-name">朱柏冰</div></li>
+						</ul>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2><img src="./images/2.png"><br>Task2</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Task2</h2>
+						<p>暂无</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2><img src="./images/3.png"><br>Task3</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Tas3</h2>
+						<article>
+							<p>暂无</p>
+						</article>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<section>
+					<div class="bl-box">
+						<h2><img src="./images/4.png"><br>Task4</h2>
+					</div>
+					<div class="bl-content">
+						<h2>Task4</h2>
+						<p>暂无</p>
+					</div>
+					<span class="bl-icon bl-icon-close"></span>
+				</section>
+				<!-- Panel items for the works -->
+				<div class="bl-panel-items" id="bl-panel-work-items"  style="position: relative;">
+					<div data-panel="panel-1">
+						<div style="overflow: hidden;">
+							<h3 style="text-align: center;">段文豪</h3>
+							<iframe src="./Task1/DWH/index.html" style="position:inherit;width: 100%;height: 80%;overflow-y: auto;" frameborder="no"></iframe>						
+						</div>
+					</div>
+					<div data-panel="panel-2">
+						<div style="overflow: hidden;">
+							<h3 style="text-align: center;">殷鹏成</h3>
+							<iframe src="./Task1/YPC/index.html" style="position:inherit;width: 100%;height: 100%;overflow-y: auto;" frameborder="no" ></iframe>
+						</div>
+					</div>
+					<div data-panel="panel-3">
+						<div style="overflow: hidden;">
+							<h3 style="text-align: center;">张梓元</h3>
+							<iframe src="./Task1/ZZY/zzy.html" style="position:inherit;width: 100%;height: 80%;overflow-y: auto;" frameborder="no" ></iframe>
+						</div>
+					</div>
+					<div data-panel="panel-4">
+						<div style="overflow: hidden;">
+							<h3 style="text-align: center;">朱柏冰</h3>
+							<iframe src="./Task1/ZBB/实习1.html" style="position: inherit;width: 100%;height: 100%;overflow-y: auto;" frameborder="no"></iframe>
+						</div>
+					</div>
+					<nav>
+						<span class="bl-next-work">&gt; 下一个</span>
+						<span class="bl-icon bl-icon-close"></span>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="js/boxlayout.js"></script>
+		<script>
+			$(function() {
+				Boxlayout.init();
+			});
+		</script>
+	</body>
+</html>

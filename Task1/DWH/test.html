@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link href="https://cdn.bootcdn.net/ajax/libs/openlayers/3.20.1/ol.css" rel="stylesheet">
+	<script src="https://cdn.bootcdn.net/ajax/libs/openlayers/3.20.1/ol.js"></script>
+
+    <style>
+      body::-webkit-scrollbar {
+          display: none;
+      }
+      .map {
+        height: 400px;
+        width: 100%;
+      }
+    </style>
+    <title>openlayer地图</title>
+  </head>
+  <body>
+    <div id="map" class="map"></div>
+    <script type="text/javascript">
+      var vecSource = new ol.source.XYZ({
+        url: 'http://t7.tianditu.com/DataServer?T=vec_w&tk=f5347cab4b28410a6e8ba5143e3d5a35&x={x}&y={y}&l={z}'
+      });
+      var cvaSource = new ol.source.XYZ({
+        url: 'http://t7.tianditu.com/DataServer?T=cva_w&tk=f5347cab4b28410a6e8ba5143e3d5a35&x={x}&y={y}&l={z}'
+      })
+
+
+      var vecLayer = new ol.layer.Tile({
+          source: vecSource,
+          name: "矢量图层",
+      })
+      var cvaLayer = new ol.layer.Tile({
+          source: cvaSource,
+          name: "矢量注记图层",
+      })
+
+      var map = new ol.Map({
+      // 绑定 DIV 元素
+      target: 'map',
+      // 添加图层
+      layers: [
+          vecLayer, cvaLayer
+      ],
+      // 设置视图窗口
+      view: new ol.View({ // 视图
+          projection: 'EPSG:4326', // 坐标系
+          // 初始化地图中心 可以去地图坐标拾取网站获取想要的坐标
+          center: [114.339408, 30.61271],
+          // 缩放
+          zoom: 8,
+          // 最大缩放
+          maxZoom: 20,
+          // 最小缩放
+          minZoom: 1
+          })
+        });
+
+    </script>
+  </body>
+</html>

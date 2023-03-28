@@ -2,9 +2,9 @@
 
 [TOC]
 
-## 1 编辑器选择
+## 编辑器选择
 
-### (1) Visual Studio Code
+### Visual Studio Code
 
 官网：[Visual Studio Code - Code Editing. Redefined](https://code.visualstudio.com/)
 
@@ -56,30 +56,25 @@
 配置：
 
 <center class="half">
-       <img src="README.assets/image-20230324090854428.png" alt="image-20230324090854428" style="width:200" />
-    <img src="README.assets/image-20230324085845734.png" alt="image-20230324085845734" style="width:200" />
-    <img src="README.assets/image-20230324085733583.png" alt="image-20230324085733583" style="width:200" /></center>
-### (2) Sublime Text
+       <img src="README.assets/image-20230324090854428.png" alt="image-20230324090854428" style="width:200;zoom:33%"/>
+    <img src="README.assets/image-20230324085845734.png" alt="image-20230324085845734" style="width:200;zoom:33%" />
+    <img src="README.assets/image-20230324085733583.png" alt="image-20230324085733583" style="width:200;zoom:33%" /></center>
+
+### Sublime Text
 
 官网：[Sublime Text - Text Editing, Done Right](https://www.sublimetext.com/)
 
 下载：
 
-![image-20230327154700293](README.assets/image-20230327154700293.png)
-
-
-
-
-
-### (3)
+<img src="README.assets/image-20230327154700293.png" alt="image-20230327154700293" style="zoom:50%;" />
 
 
 
    
 
-## 2 第三方库使用
+## 第三方库使用
 
-### 2.1 JQuery
+### JQuery
 JQuery是一个快速、小巧、功能丰富的JavaScript库。它使HTML文档的遍历和操作、事件处理、动画和Ajax等事情变得更加简单，它有一个易于使用的API，可以在众多的浏览器上使用。凭借多功能性和可扩展性的结合，JQuery已经改变了数百万人编写JavaScript的方式。官网:[JQuery官网](https://jquery.com/)
 
 ```javascript
@@ -91,37 +86,35 @@ $(document).ready(function(){
 
 ```
 
-### 2.2 Modernizr
+### Modernizr
 
 Modernizr可用于响应用户的浏览器功能，Modernizr告诉你用户的浏览器可以提供哪些HTML、CSS和JavaScript功能。
 
 Modernizr是一组超快的测试-或者称之为 "检测"-在你的网页加载时运行，然后你可以使用测试结果来为用户定制体验。所有网络开发者都会遇到浏览器和设备之间的差异。这主要是由于不同的功能集：最新版本的流行浏览器可以做一些旧版浏览器做不到的很棒的事情--但我们仍然要支持旧版浏览器。Modernizr使得提供分层体验变得很容易：在支持这些功能的浏览器中使用最新和最伟大的功能，而不至于让不那么幸运的用户感到无奈。
 
-### 2.3 Openlayers
+### Openlayers
 
-
-
-### 2.4 TweenMax
+### TweenMax
 
 TweenMax是GreenSock Animation Platform(GSAP)动画平台核心文件。TweenMax.js集成了GreenSock动画平台的大部分核心功能,且具有极高的兼容性。相较于[Animate.css](https://animate.style/)，这个插件封装的的确很好，但在做一些缓动方面的动画，它也有一定的不足之处。TweenMax更方便，更快速，更清亮与模块化，灵活控制，不受限于线性序列，可以重叠动画序列。
 
-### 2.5 Normalize.css
+### Normalize.css
 
 Normalize.css是一个很小的CSS文件，它默认的HTML元素样式上提供了跨浏览器的高度一致性，相比传统的CSS reset，Normalize.css是一种现代的、为HTML5准备的优质替代方案。
 
 Normalize.css官网地址：https://necolas.github.io/normalize.css/
 
-### 2.6 swiper.js
+### swiper.js
 
 Swiper常用于移动端网站的内容触摸滑动，Swiper是纯javascript打造的滑动特效插件，面向手机、平板电脑等移动终端。Swiper能实现触屏焦点图、触屏Tab切换、触屏轮播图切换等常用效果。
 
-### 2.7 model-viewer
+### model-viewer
 
 `<model-viewer>`是一个 Web 组件，使渲染交互式 3D 模型 - 可选在 AR 中 - 易于操作，在尽可能多的浏览器和设备上。 `<model-viewer>`努力为您提供出色的渲染质量默认值，并提高性能。
 
-## 3 主页设计
+## 主页设计
 
-### 3.1 设计参考
+### 设计参考
 
 主要界面设计来自[Fullscreen Layout Page Transitions - Pure JS/CSS (codepen.io)](https://codepen.io/marcelo-ribeiro/pen/xOOKpO)。将主页面分成四部分，每部分可描述一次实习。
 
@@ -129,7 +122,7 @@ Swiper常用于移动端网站的内容触摸滑动，Swiper是纯javascript打�
 
 这样的布局设计叫做`boxlayout`(箱式布局)，很适合多个独立的任务设计与多层内容描述。
 
-### 3.2 设计细节
+### 设计细节
 
 在根目录下的`js`文件夹和`css`文件夹中，分别有`boxlayout.js`和`component.css`。这两个文件控制了整体的布局和跳转。
 
@@ -194,9 +187,13 @@ $section.on( 'click', function() {
 
 当然上述代码只是部分内容的，完整的控制需要全部代码发挥作用。这里大部分是根据参考提供的，进行了少部分调整。
 
-## 4 Task1
+## Task1
 
-### 4.1 整体的导航设计
+通过github page，可以访问我们的网站，但由于github的网络问题，不能访问天地图。地址：[互联网与移动GIS开发任务作业 (dwh553321494.github.io)](https://dwh553321494.github.io/webgis_task/)
+
+实习已经部署到了服务器上面，域名尚未通过，现阶段只能通过公网ip访问：[互联网与移动GIS开发任务作业](http://47.92.251.195:8080/)
+
+### 整体的导航设计
 
 ![image-20230327203904571](README.assets/image-20230327203904571.png)
 
@@ -204,9 +201,9 @@ $section.on( 'click', function() {
 
 下面的四个图片分别对应每个人主页的入口。点击图片即可查看每个人的个人主页。
 
-### 4.2 段文豪部分
+### 段文豪部分
 
-#### 4.2.1 文件结构
+#### 文件结构
 
 ```python
 ./DWH
@@ -233,7 +230,7 @@ $section.on( 'click', function() {
         nav.js			      # 导航栏的事件监听js文件
 ```
 
-#### 4.2.2 个人主页展示
+#### 个人主页展示
 
 （1）顶部
 
@@ -272,7 +269,7 @@ $section.on( 'click', function() {
 
 ![image-20230327210938354](README.assets/image-20230327210938354.png)
 
-这里没有说从本地请求一个json文件，而是解释一下json格式和举了一个例子。关于json格式常用于前后端的交互，在WebGIS中有另一常见的传输格式--geoJson。其与普通的json区别就是以特定的结构储存地理信息，但结构上与json格式保持一致，同样也是键值对。其可直接由一些地理GIS库进行解读，而其实以传统json格式记录地理信息，同样也可以用于地理信息的传输。
+这里没有说从本地请求一个json文件，而是解释一下json格式和举了一个例子。关于json格式常用于前后端的交互，在WebGIS中有另一常见的传输格式--GeoJson。其与普通的json区别就是以特定的结构储存地理信息，但结构上与json格式保持一致，同样也是键值对。其可直接由一些地理GIS库进行解读，而其实以传统json格式记录地理信息，同样也可以用于地理信息的传输。
 
 而传输时的工具常用的是`ajax`，其封装好了请求方法，例如`get`、`post`、`delete`等。在vue中，用axios可以很方便的进行二次封装，很方便地可以用在前后端分离的项目中。
 
@@ -303,7 +300,7 @@ $section.on( 'click', function() {
 
 阐述本次实习参考网页，和后续目标。希望在后面的学习中有更多的思考和感悟。
 
-#### 4.2.3 遇到的问题
+#### 遇到的问题
 
 1. 插入的`html`的滚轮隐藏问题。
 
@@ -316,4 +313,10 @@ body::-webkit-scrollbar {
     display: none;
 }
 ```
+
+2. 一个在`css`上的bug
+
+在使用我的导航栏时，在点击完后，整体的页面均往上移，尚未解决。
+
+![image-20230328150235218](README.assets/image-20230328150235218.png)
 

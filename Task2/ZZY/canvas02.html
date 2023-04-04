@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<header>
+ 
+</header>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<body style="text-align:center;">
+    <canvas id="myCanvas1" width="270" height="270"
+        style=" border-radius: 5%;position: absolute;background-color:cadetblue;border-radius: 5%;top:14%;left:15%;">Your
+        browser does not support the HTML5 canvas tag.</canvas>
+    <img id="svg-image" src="./img/地球.svg" style="display: none;">
+    <script>
+        function draw(id) {
+            var waveWidth = 400,
+                offset = 0,
+                waveHeight = 5,
+                waveCount = 5,
+                startX = -100,
+                startY = 304,
+                progress = 0,
+                progressStep = 0.6,
+                d2 = waveWidth / waveCount,
+                d = d2 / 2,
+                hd = d / 2;
+
+            var c = document.getElementById(id);
+            var ctx = c.getContext("2d");
+            var img = new Image();
+
+            function tick() {
+                offset -= 2;
+                progress += progressStep;
+                // 从下往上画
+                if (progress > 320 || progress < 0) progressStep *= -1;
+
+                if (-1 * offset === d2) offset = 0;
+                ctx.clearRect(0, 0, c.width, c.height);
+
+                ctx.beginPath();
+                var offsetY = startY - progress;
+                ctx.moveTo(startX - offset, offsetY);
+
+                for (var i = 0; i < waveCount; i++) {
+                    var dx = i * d2;
+                    var offsetX = dx + startX - offset;
+
+                    ctx.quadraticCurveTo(offsetX + hd, offsetY + waveHeight, offsetX + d, offsetY);
+                    ctx.quadraticCurveTo(offsetX + hd + d, offsetY - waveHeight, offsetX + d2, offsetY);
+                }
+
+
+                ctx.lineTo(startX + waveWidth, 300);
+                ctx.lineTo(startX, 300);
+                ctx.fillStyle = "rgb(26, 119, 189)";
+                ctx.fill();
+                //画布上已有的内容只会在它和新图形重叠的地方保留。新图形绘制于内容之后。
+                ctx.globalCompositeOperation = "destination-atop";
+                ctx.drawImage(img, 0, 0, c.width, c.height)
+                requestAnimationFrame(tick);
+            }
+
+            img.onload = function () {
+                tick();
+            };
+
+            img.src = "./img/地球.png";
+        }
+        draw("myCanvas1")
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<style>
+    body::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+<body style="text-align:center;">
+    <canvas id="myCanvas1" width="270" height="270" style="border-radius: 5%;position: absolute;top:14%;left:15%;">Your browser does not support the
+        HTML5 canvas tag.</canvas>
+    <canvas id="myCanvas2" width="270" height="270" style="border-radius: 5%;position: absolute;top:14%;left:15%;">Your
+        browser does not support the HTML5 canvas tag.</canvas>
+    <script>
+
+        function draw(id) {
+            var waveWidth = 400,
+                offset = 0,
+                waveHeight = 5,
+                waveCount = 5,
+                startX = -100,
+                startY = 304,
+                progress = 0,
+                progressStep = 0.6,
+                d2 = waveWidth / waveCount,
+                d = d2 / 2,
+                hd = d / 2;
+
+            var c = document.getElementById(id);
+            var ctx = c.getContext("2d");
+
+
+            function tick() {
+                offset -= 2;
+                progress += progressStep;
+                // 从下往上画
+                if (progress > 320 || progress < 0) progressStep *= -1;
+
+                if (-1 * offset === d2) offset = 0;
+                ctx.clearRect(0, 0, c.width, c.height);
+
+                ctx.beginPath();
+                var offsetY = startY - progress;
+                ctx.moveTo(startX - offset, offsetY);
+
+                for (var i = 0; i < waveCount; i++) {
+                    var dx = i * d2;
+                    var offsetX = dx + startX - offset;
+
+                    ctx.quadraticCurveTo(offsetX + hd, offsetY + waveHeight, offsetX + d, offsetY);
+                    ctx.quadraticCurveTo(offsetX + hd + d, offsetY - waveHeight, offsetX + d2, offsetY);
+                }
+
+
+                ctx.lineTo(startX + waveWidth, 300);
+                ctx.lineTo(startX, 300);
+                ctx.fillStyle = "rgb(41, 171, 225)";
+                ctx.fill();
+                requestAnimationFrame(tick);
+
+            }
+
+            tick();
+
+        }
+
+        draw("myCanvas1")
+        drawUmbrella("myCanvas2")
+        function drawUmbrella(id) {
+            var canvas = document.getElementById(id);
+            if (canvas == null)
+                return false;
+            var ctx = canvas.getContext('2d');
+            ctx.beginPath();
+
+            // 小雨点
+            ctx.moveTo(47, 32);
+            ctx.bezierCurveTo(40, 42, 38, 56, 46, 60);
+            ctx.bezierCurveTo(64, 52, 50, 40, 47, 32);
+
+            // 大雨点
+            ctx.moveTo(78, 32);
+            ctx.bezierCurveTo(70, 44, 62, 66, 78, 70);
+            ctx.bezierCurveTo(104, 60, 80, 40, 78, 32);
+
+            // 伞身
+            ctx.moveTo(44, 118);
+            ctx.bezierCurveTo(48, 114, 50, 90, 72, 76);
+            ctx.bezierCurveTo(82, 82, 104, 70, 102, 54);
+            ctx.bezierCurveTo(138, 26, 222, 76, 224, 118);
+            ctx.lineTo(146, 118);
+            ctx.lineTo(146, 200);
+
+            ctx.bezierCurveTo(147, 212, 162, 216, 162, 192);
+            ctx.bezierCurveTo(168, 188, 172, 186, 178, 192);
+            ctx.bezierCurveTo(180, 200, 182, 218, 162, 231);
+            ctx.bezierCurveTo(154, 240, 116, 226, 122, 200);
+
+            ctx.lineTo(122, 118);
+            ctx.lineTo(44, 118);
+            ctx.fillStyle = 'rgb(26, 119, 189)'; // 设置画布填充颜色
+            ctx.fillRect(0, 0, canvas.width, canvas.height); // 填充整个画布
+            ctx.strokeStyle = "black"; //设置或返回用于笔触的颜色、渐变
+            // ctx.stroke();
+            ctx.globalCompositeOperation = 'destination-out';
+
+            ctx.fillStyle = 'rgba(52, 152, 219, 1)';
+
+            ctx.fill();
+
+
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

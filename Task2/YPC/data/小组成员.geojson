@@ -1,0 +1,175 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    111.433787,
+                    27.600345
+                ]
+            },
+            "properties": {
+                "姓名": "段文豪",
+                "性别": "男",
+                "爱好": "ctrl",
+                "使用的编辑器": "notepad--",
+                "人生格言": "打死不用notepad++"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    108.941001,
+                    34.343902
+                ]
+            },
+            "properties": {
+                "姓名": "白向东",
+                "性别": "男",
+                "爱好": "躺",
+                "使用的编辑器": "vscode",
+                "人生格言": "？？？？"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    112.121405,
+                    32.057053
+                ]
+            },
+            "properties": {
+                "姓名": "邓濯缨",
+                "性别": "男",
+                "爱好": "无",
+                "使用的编辑器": "记事本",
+                "人生格言": "文文老师不喜欢这么中二"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    115.595644,
+                    32.628297
+                ]
+            },
+            "properties": {
+                "姓名": "翟高亚",
+                "性别": "男",
+                "爱好": "无",
+                "使用的编辑器": "vscode",
+                "人生格言": "你让我拿什么荔枝"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.953498,
+                    30.918206
+                ]
+            },
+            "properties": {
+                "姓名": "殷鹏成",
+                "性别": "男",
+                "爱好": "d",
+                "使用的编辑器": "sublime",
+                "人生格言": "o.0?"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    117.28,
+                    31.86
+                ]
+            },
+            "properties": {
+                "姓名": "张梓元",
+                "性别": "男",
+                "爱好": "啊",
+                "使用的编辑器": "vscode",
+                "人生格言": "一个真正的man，他知道自己该做什么"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    110.78523,
+                    32.64701
+                ]
+            },
+            "properties": {
+                "姓名": "朱柏冰",
+                "性别": "女",
+                "爱好": "柯南",
+                "使用的编辑器": "pspad",
+                "人生格言": "真相只有一个"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    121.310065,
+                    31.954047
+                ]
+            },
+            "properties": {
+                "姓名": "赵袁迪",
+                "性别": "男",
+                "爱好": "无",
+                "使用的编辑器": "vscode",
+                "人生格言": "扣1真有用"
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    108.93,
+                    34.27
+                ]
+            },
+            "properties": {
+                "姓名": "杨竞杰",
+                "性别": "男",
+                "爱好": 1,
+                "使用的编辑器": "vscode",
+                "人生格言": 1
+            }
+        },
+        {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    113.118891,
+                    23.019986
+                ]
+            },
+            "properties": {
+                "姓名": "郑兴健",
+                "性别": "男",
+                "爱好": 0,
+                "使用的编辑器": "VScode",
+                "人生格言": 1
+            }
+        }
+    ]
+}

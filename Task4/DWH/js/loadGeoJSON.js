@@ -77,17 +77,6 @@ map.on('click', function (e) {
         console.log(id)
         // 属性数据存储
         layerProperties[layer.id] = properties;
-
-        for (let i in layerHighlights) {
-            // 取消上次高亮
-            if (i === layer.id) {
-                const { id, source } = layerHighlights[i];
-                map.setFeatureState(
-                    { source, id },
-                    { hover: false }
-                );
-            }
-        }
         // 添加新的高亮
         map.setFeatureState(
             { source, id },
@@ -116,10 +105,32 @@ map.on('click', function (e) {
 
     // 属性展示
     if (Object.keys(layerProperties).length > 0) {
-        new mapboxgl.Popup()
+        var popup = new mapboxgl.Popup()
             .setLngLat(e.lngLat)
             .setHTML(propertiesContent)
             .addTo(map);
+        popup.on('close', function(e){
+            let renderFeatures = map.queryRenderedFeatures(bbox, { layers: existLayersIds });
+            renderFeatures.forEach(renderFeature => {
+                console.log('renderFeature', renderFeature);
+                
+                const { id, layer, source, properties } = renderFeature;
+                console.log(id)
+                // 属性数据存储
+                layerProperties[layer.id] = properties;
+
+                for (let i in layerHighlights) {
+                    // 取消上次高亮
+                    if (i === layer.id) {
+                        const { id, source } = layerHighlights[i];
+                        map.setFeatureState(
+                            { source, id },
+                            { hover: false }
+                        );
+                    }
+                }
+            });
+        })
     }
 
 });

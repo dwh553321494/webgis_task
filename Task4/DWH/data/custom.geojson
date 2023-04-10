@@ -5,7 +5,13 @@
         "type": "Feature",
         "properties": {
           "name":"艰苦朴素，求真务实",
-          "description":"这是地大校训"
+          "description":"这是地大校训",
+          "color": "#ff0000",
+          "radius": 5,
+          "opacity": 0.8,
+          "strokeWidth": 2,
+          "strokeColor": "#ff0000",
+          "strokeOpacity": 1
         },
         "geometry": {
           "coordinates": [
@@ -19,7 +25,13 @@
         "type": "Feature",
         "properties": {
           "name":"地质人",
-          "description":"这是地质人雕塑"
+          "description":"这是地质人雕塑",
+          "color": "#ff00ff",
+          "radius": 5,
+          "opacity": 1,
+          "strokeWidth": 1,
+          "strokeColor": "#ff00ff",
+          "strokeOpacity": 1
         },
         "geometry": {
           "coordinates": [
@@ -33,7 +45,10 @@
         "type": "Feature",
         "properties": {
           "name":"一天的路线",
-          "description":"一天一天的路线，重复的生活"
+          "description":"一天一天的路线，重复的生活",
+          "color": "#b0bec5",
+          "width": 5,
+          "opacity": 1
         },
         "geometry": {
           "coordinates": [
@@ -73,7 +88,10 @@
         "type": "Feature",
         "properties": {
           "name":"经管学院",
-          "description":"很多漂亮姐姐的学院"
+          "description":"很多漂亮姐姐的学院",
+          "color": "#ffee58",
+          "opacity": 0.8,
+          "outlineColor":"#ffee58"
         },
         "geometry": {
           "coordinates": [
@@ -107,7 +125,10 @@
         "type": "Feature",
         "properties": {
           "name":"环境学院",
-          "description":"跟隔壁学院赶在感很低"
+          "description":"跟隔壁学院赶在感很低",
+          "color": "#ffee58",
+          "opacity": 0.8,
+          "outlineColor":"#ffee58"
         },
         "geometry": {
           "coordinates": [
@@ -173,7 +194,10 @@
         "type": "Feature",
         "properties": {
           "name":"材化学院",
-          "description":"跟隔壁学院的存在感很低"
+          "description":"跟隔壁学院的存在感很低",
+          "color": "#ffee58",
+          "opacity": 0.8,
+          "outlineColor":"#ffee58"
         },
         "geometry": {
           "coordinates": [

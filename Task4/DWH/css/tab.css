@@ -1,0 +1,112 @@
+body {
+    font-family: Arial,Verdana,Helvetica,sans-serif;
+    font-size: 1em;
+    /* overflow: hidden; */
+    min-height: 325px;
+  }
+  
+  .container {
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-top: 16%;
+  }
+  
+  /*Menu*/
+  ul.tabs {
+    float: left;
+    clear: both;
+    width: 100%;
+    list-style: none;
+    border-bottom: 2px solid #00aeef;
+    position: relative;
+    font-size: 1.061em;
+    padding: 0;
+  }
+  
+  ul.tabs li {
+    float: left;
+  }
+  
+  ul.tabs li a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #666;
+    padding: 12px 20px;
+    min-width: 20px;
+    font-weight: normal;
+  }
+  
+  ul.tabs li.active a {
+    color: #00aeef;
+  }
+  
+  .tabsContainer {
+    float: left;
+    clear: both;
+    width: 100%;
+    overflow: hidden;
+    *position: relative;
+  }
+  
+  .tabWrapper {
+    position: relative;
+    font-size: 0rem;
+    letter-spacing: -.31em;
+    word-spacing: -.43em;
+    white-space: nowrap;
+    *width: 300%;
+  }
+  
+  .tabContent {
+    background-color: #ffffff;
+    height: 430px;
+    text-align: left;
+    width: 100%;
+    padding: 0px;
+    position: relative;
+    overflow-y:auto;
+    
+  }
+  .tabContent::-webkit-scrollbar{
+    display: none;
+  }
+  
+  .tabWrapper > * {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    font-size: 1rem;
+    letter-spacing: normal;
+    vertical-align: top;
+    word-spacing: normal;
+    white-space: normal;
+    *width: 800px;
+  }
+  
+  #magic-line {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100px;
+    height: 4px;
+    background: #00aeef;
+  }
+  
+  /*Clear Fix*/
+  .tabs:after {
+    visibility: hidden;
+    display: block;
+    content: "";
+    clear: both;
+    height: 0;
+  }
+  
+  *:first-child + html .tabs {
+    zoom: 1;
+  }
+  

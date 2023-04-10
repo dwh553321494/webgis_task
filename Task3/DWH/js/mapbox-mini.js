@@ -42,7 +42,7 @@ Minimap.prototype = Object.assign({}, mapboxgl.NavigationControl.prototype, {
 		fillOpacity: 0.25,
 
 		dragPan: false,
-		scrollZoom: false,
+		scrollZoom: true,
 		boxZoom: false,
 		dragRotate: false,
 		keyboard: false,

@@ -31,8 +31,6 @@ var mouseX = 0, mouseY = 0,
         canvas.height = window.innerHeight;  
     };
   
-  
-  
   class Particle {
         constructor(canvas, context, x, y) {
             this.canvas = canvas;
@@ -179,19 +177,19 @@ var mouseX = 0, mouseY = 0,
 (function gui() {
     let gui = new dat.GUI();
   
-    textGUI = gui.add(this, 'text').name('Text');
+    textGUI = gui.add(this, 'text').name('展示内容');
     textGUI.onChange(() => {  
       this.isPopulated = false;
     });
 
     let f1 = gui.addFolder('Mouse');
-    f1.add(this, 'mouseRadius', 10, 100).name('Radius');
-    f1.add(this, 'mousePower', 5, 15).name('Power');  
+    f1.add(this, 'mouseRadius', 10, 100).name('半径');
+    f1.add(this, 'mousePower', 5, 15).name('力度');  
     f1.open();
   
     let f2 = gui.addFolder('Particle');
-    f2.add(this, 'particleStiffness', 0.1, 1).name('Stiffness');
-    f2.add(this, 'particleFriction', 0.1, 0.95).name('Friction'); 
+    f2.add(this, 'particleStiffness', 0.1, 1).name('刚度');
+    f2.add(this, 'particleFriction', 0.1, 0.95).name('摩擦度'); 
     f2.open();
   
 })();

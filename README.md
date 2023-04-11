@@ -323,7 +323,7 @@ $section.on( 'click', function() {
 <center style="font-size:12px;color:#C0C0C0;">图9 段文豪知乎主页</center> 
 
 2. 第二个是关于我目前的专业学习。图片很好的诠释了目前的学习生活状态，每天差不多就是这么几步。
-    
+   
     点击GitHub主页可以跳转到我的github个人主页，虽里面没啥东西。
     ![image-20230327210515729](README.assets/image-20230327210515729.png)
 

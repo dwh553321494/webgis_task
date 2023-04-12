@@ -193,6 +193,7 @@ map.on('click', function (e) {
             circleStrokeColor.value = currentFeature.properties.strokeColor
             circleStrokeOpacity.value = currentFeature.properties.strokeOpacity
             circleStrokeWidth.value = currentFeature.properties.strokeWidth
+
         }else if(currentFeature.geometry.type == "LineString"){
             document.getElementById("line-width").value = currentFeature.properties.width
             document.getElementById("line-opacity").value = currentFeature.properties.opacity

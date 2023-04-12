@@ -54,7 +54,6 @@ circleStrokeColor.addEventListener('change', function() {
     circleStrokeColorPicker.color.hexString = this.value;
 });
 
-
 // ----------------------------------------------------------------
 var linecolorPicker = new iro.ColorPicker(".linecolorPicker", {
     width: 150,
@@ -108,10 +107,10 @@ polygoncolorPicker.on(["color:init", "color:change"], function(color){
     polygonColor.value = color.hexString;
 });
 
+
 polygonColor.addEventListener('change', function() {
     polygoncolorPicker.color.hexString = this.value;
 });
-
 
 
 var outlineColorPicker = new iro.ColorPicker(".outlineColorPicker", {

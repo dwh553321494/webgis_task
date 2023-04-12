@@ -136,6 +136,7 @@ map.on('click', function (e) {
             document.getElementById("outlineColor").value = currentFeature.properties.outlineColor
             document.getElementById("polygon-opacity").value = currentFeature.properties.opacity
             document.getElementById("polygonColor").value = currentFeature.properties.color
+        
         }
 
         // 更新图层高亮集合

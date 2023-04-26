@@ -4,7 +4,7 @@
     overflow: hidden;
     box-sizing: border-box;
     position: relative;
-    height: 100vh;
+    height: 100%;
   }
   
   .fnc-slider *, .fnc-slider *:before, .fnc-slider *:after {
@@ -172,19 +172,23 @@
     z-index: 2;
     position: absolute;
     left: 40%;
-    top: 5%;
+    /* top: 1%; */
   }
   
   .fnc-slide__heading {
     margin-bottom: 10px;
     text-transform: uppercase;
   }
+
+  .fnc-slide__content h2{
+    padding: 0;
+  }
   
   .fnc-slide__heading-line {
     overflow: hidden;
     position: relative;
     padding-right: 20px;
-    font-size: 100px;
+    font-size: 26px;
     color: #fff;
     word-spacing: 10px;
   }
@@ -276,7 +280,7 @@
     vertical-align: top;
     width: 25%;
     height: 100%;
-    font-size: 32px;
+    font-size: 16px;
     color: #fff;
     text-transform: uppercase;
     background: transparent;

@@ -53,7 +53,7 @@ var map = new mapboxgl.Map({
 
 //-------------------------------------------------------------------------------------
 // 控件
-map.addControl(new mapboxgl.Minimap(), 'bottom-right');
+map.addControl(new mapboxgl.Minimap(), 'bottom-left');
 map.addControl(new mapboxgl.FullscreenControl());
 map.addControl(new mapboxgl.NavigationControl());
 map.addControl(new mapboxgl.FrameRateControl());

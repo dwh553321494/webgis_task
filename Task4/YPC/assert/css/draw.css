@@ -1,0 +1,73 @@
+.ul1 {
+  /* width: 1620px; */
+  margin: 0 auto;
+}
+.ul1 .li1 {
+  float: right;
+  list-style: none;
+  margin-right: 10px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+.ul1 .li1 .a1 {
+  text-align:center;
+  font: 700 15px Open Sans;
+  text-transform: uppercase;
+  position: relative;
+  color: #333333;
+  text-decoration: none;
+  border: 3px solid #000000;
+  letter-spacing: 1px;
+  padding: 10px 15px 10px 25px;
+  display: block;
+  width: 150px;
+  z-index: 5000;
+}
+.ul1 .li1 .a1 i {
+  font-size: 12px !important;
+  position: absolute;
+  right: 10px;
+  top: 14px;
+}
+.ul1 .li1 .drop-down {
+  position: absolute;
+  padding: 0;
+  display: none;
+  margin: 0;
+  left: 0;
+  z-index: 0;
+}
+.ul1 .li1 .drop-down li {
+  position: relative;
+  list-style: none;
+  float: none;
+}
+.ul1 .li1 .drop-down li a {
+  border-top: none;
+  width: 150px;
+}
+.ul1 .li1 .drop-down li a:hover {
+  background: #000000;
+  color: #ffffff;
+}
+.ul1 .li1 .drop-down li:nth-of-type(1) a {
+  border-top: none;
+}
+.accent {
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #000;
+  color: #ffffff;
+  position: absolute;
+  transition: 0.3s ease;
+}
+.animate {
+  width: 100%;
+  transition: 0.3s ease;
+}
+.item:hover {
+  color: #ffffff;
+}

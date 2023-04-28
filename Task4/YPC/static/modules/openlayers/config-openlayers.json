@@ -1,0 +1,848 @@
+{
+    "name": "OpenLayers",
+    "title": "MapGIS WebClinet-Openlayers演示网站",
+    "mapmode": "openlayers",
+    "childs": [
+        {
+            "name": "MapGIS IGServer",
+            "iconfont": "iconserver1",
+            "folder": "IGServer",
+            "leaffolder": false,
+            "childs": [
+                {
+                    "name": "地图服务",
+                    "iconfont": "iconmap",
+                    "folder": "MapService",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                            "name": "地图文档服务(EPSG4326)",
+                            "file": "E01EPSG4326",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E01EPSG4326.png",
+                            "update": "最后更新时间：2019-11-07"
+                        },
+                        {
+                            "name": "地图文档服务(EPSG3857)",
+                            "file": "E02EPSG3857",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02EPSG3857.png",
+                            "update": "最后更新时间：2019-11-07"
+                        },
+                        {
+                            "name": "地图文档服务(自定义坐标系)",
+                            "file": "E03DefineProject",
+                            "diffcult": "4",
+                            "detail": "自定义投影",
+                            "icon": "E03DefineProject.png",
+                            "update": "最后更新时间：2019-11-07"
+                        },
+                        {
+                            "name": "瓦片地图服务（自定义比例尺）",
+                            "file": "E04DefineScale",
+                            "diffcult": "4",
+                            "detail": "自定义比例尺",
+                            "icon": "E04DefineScale.png",
+                            "update": "最后更新时间：2019-11-07"
+                        }, {
+                            "name": "瓦片地图服务（标准比例尺）",
+                            "file": "E05TileService",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E05TileService.png",
+                            "update": "最后更新时间：2019-11-07"
+                        },
+                        {
+                            "name": "图层服务（矢量图层）",
+                            "file": "E07LayerService",
+                            "diffcult": "2",
+                            "detail": "矢量图层服务",
+                            "icon": "E07LayerService.png",
+                            "update": "最后更新时间：2019-11-07"
+                        }
+                    ]
+                },
+                {
+                    "name": "要素服务",
+                    "iconfont": "iconfeature",
+                    "folder": "FeatureService",
+                    "leaffolder": true,
+                    "childs": [{
+                            "name": "属性条件查询（矢量图层）",
+                            "file": "E01QueryLayerByAttribute",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E01QueryLayerByAttribute.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "要素FID查询（矢量图层）",
+                            "file": "E02QueryLayerByFID",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E02QueryLayerByFID.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "指定几何范围查询（矢量图层）",
+                            "file": "E03QueryLayerByGeom",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E03QueryLayerByGeom.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "鼠标交互范围查询（矢量图层）",
+                            "file": "E04QueryLayerByInteraction",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E04QueryLayerByInteraction.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "属性条件查询（地图文档）",
+                            "file": "E01QueryDocByAttribute",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E01QueryDocByAttribute.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "要素FID查询（地图文档）",
+                            "file": "E02QueryDocByFID",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E02QueryDocByFID.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "指定几何范围查询（地图文档）",
+                            "file": "E03QueryDocByGeom",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E03QueryDocByGeom.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "鼠标交互范围查询（地图文档）",
+                            "file": "E04QueryDocByInteraction",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E04QueryDocByInteraction.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "点要素编辑（矢量图层）",
+                            "file": "E01InterActionPointEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E01InterActionPointEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "线要素编辑（矢量图层）",
+                            "file": "E02InterActionLinEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E02InterActionLinEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "区要素编辑（矢量图层）",
+                            "file": "E03InterActionRegEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E03InterActionRegEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "点要素编辑（地图文档）",
+                            "file": "E01InterActionDocPointEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E01InterActionDocPointEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "线要素编辑（地图文档）",
+                            "file": "E02InterActionDocLinEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E02InterActionDocLinEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "区要素编辑（地图文档）",
+                            "file": "E03InterActionDocRegEdit",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E03InterActionDocRegEdit.png",
+                            "update": "最后更新时间：2020-9-25"
+                        }
+
+                    ]
+                },
+                {
+                    "name": "专题图",
+                    "iconfont": "icontheme",
+                    "folder": "ThemeService",
+                    "leaffolder": true,
+                    "childs": [{
+                            "name": "分段专题图（单字段）",
+                            "file": "E03ParagraphThemeBySinglefield",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E03ParagraphThemeBySinglefield.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "分段专题图（多字段）",
+                            "file": "E02ParagraphThemeByMultifield",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02ParagraphThemeByMultifield.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "四色专题图",
+                            "file": "E06FourColorTheme",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E06FourColorTheme.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "统计专题图",
+                            "file": "E07ChartTheme",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E07ChartTheme.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "密度专题图",
+                            "file": "E08DotDensityTheme",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E08DotDensityTheme.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "等级符号专题图",
+                            "file": "E09GraduatedSymbolTheme",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E09GraduatedSymbolTheme.png",
+                            "update": "最后更新时间：2020-9-25"
+                        }
+                    ]
+                },
+                {
+                    "name": "几何分析",
+                    "iconfont": "iconlength-check",
+                    "folder": "GeometryAnalysisService",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                            "name": "几何量算",
+                            "file": "E02MeasureService",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02MeasureService.png",
+                            "update": "最后更新时间：2019-11-07"
+                        },
+                        {
+                            "name": "拓扑分析",
+                            "file": "E01TopAnalysisService",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E01TopAnalysisService.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "点坐标转换",
+                            "file": "E01DotsProject",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E01DotsProject.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "矩形坐标转换",
+                            "file": "E02RectProject",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02RectProject.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "类静态投影（图层）",
+                            "file": "E03LayerProject",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E03LayerProject.png",
+                            "update": "最后更新时间：2020-9-25"
+                        }
+                    ]
+                },
+                {
+                    "name": "空间分析",
+                    "iconfont": "iconsearch",
+                    "folder": "AnalysisService",
+                    "leaffolder": true,
+                    "childs": [{
+                            "name": "缓冲分析（类缓冲）",
+                            "file": "E01BuffAnalysisByClass",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E01BuffAnalysisByClass.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "缓冲分析（要素缓冲）",
+                            "file": "E02BuffAnalysisByFeature",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02BuffAnalysisByFeature.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "裁剪分析（几何图形裁剪）",
+                            "file": "E03GeometryClip",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E03GeometryClip.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "裁剪分析（图层裁剪）",
+                            "file": "E04LayerClipAnalysis",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E04LayerClipAnalysis.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "叠加分析（几何图形叠加）",
+                            "file": "E05PolygonOverLayAnalysis",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E05PolygonOverLayAnalysis.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "叠加分析（图层叠加）",
+                            "file": "E06LayerOverLayAnalysis",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E06LayerOverLayAnalysis.png",
+                            "update": "最后更新时间：2020-9-25"
+                        }
+                    ]
+                },
+                {
+                    "name": "网络分析",
+                    "iconfont": "iconsearch",
+                    "folder": "NetService",
+                    "leaffolder": true,
+                    "childs": [{
+                        "name": "最优路径分析",
+                        "file": "E01NetAnalysist",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01NetAnalysist.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }]
+                }
+            ]
+        },
+        {
+            "name": "互联网地图",
+            "iconfont": "iconinternet",
+            "folder": "ThirdMap",
+            "leaffolder": true,
+            "childs": [{
+                    "name": "百度",
+                    "file": "E01Baidu",
+                    "diffcult": "2",
+                    "detail": "包含百度提供的各式各样的炫彩地图，请注意这是收费功能！！。",
+                    "icon": "E01Baidu.png",
+                    "update": "最后更新时间：2020-9-25"
+                },
+                {
+                    "name": "天地图",
+                    "file": "E02Tianditu",
+                    "diffcult": "1",
+                    "detail": "",
+                    "icon": "E02Tianditu.png",
+                    "update": "最后更新时间：2020-9-25"
+                },
+                {
+                    "name": "高德 ",
+                    "file": "E07Gaode",
+                    "diffcult": "1",
+                    "detail": "",
+                    "icon": "E07Gaode.png",
+                    "update": "最后更新时间：2020-9-25"
+                },
+                {
+                    "name": "Bing",
+                    "file": "E04Bings",
+                    "diffcult": "1",
+                    "detail": "",
+                    "icon": "E04Bings.png",
+                    "update": "最后更新时间：2020-9-25"
+                },
+
+                {
+                    "name": "ArcGIS ",
+                    "file": "E06Arcgis",
+                    "diffcult": "1",
+                    "detail": "",
+                    "icon": "E06Arcgis.png",
+                    "update": "最后更新时间：2020-9-25"
+                }
+            ]
+        },
+        {
+            "name": "OGC",
+            "iconfont": "iconstandard1",
+            "folder": "OGC",
+            "leaffolder": true,
+            "childs": [
+                {
+                    "name": "WMS（MapGIS）",
+                    "file": "E01WMS_MapGIS",
+                    "diffcult": "2",
+                    "detail": "ogc-wms_MapGIS服务",
+                    "icon": "E01WMS_MapGIS.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "WMTS（MapGIS）",
+                    "file": "E03WMTS_MapGIS",
+                    "diffcult": "2",
+                    "detail": "ogc-wmts_MapGIS服务",
+                    "icon": "E03WMTS_MapGIS.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "WMTS（ArcGIS）",
+                    "file": "E04WMTS",
+                    "diffcult": "2",
+                    "detail": "ogc-wmt服务",
+                    "icon": "E04WMTS.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "WMS（geoserver）",
+                    "file": "E02WMS",
+                    "diffcult": "2",
+                    "detail": "ogc-wms要素类服务",
+                    "icon": "E02WMS.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "WFS（geoserver）",
+                    "file": "E05WFS",
+                    "diffcult": "2",
+                    "detail": "ogc-wfs服务",
+                    "icon": "E05WFS.png",
+                    "update": "最后更新时间：2019-11-07"
+                }
+            ]
+        },
+        {
+            "name": "客户端基础功能",
+            "iconfont": "iconserver1",
+            "folder": "Base",
+            "leaffolder": false,
+            "childs": [
+                {
+                    "name": "基础控件",
+                    "iconfont": "iconmap",
+                    "folder": "MapControl",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                        "name": "地图控件",
+                        "file": "E01Navigation",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01Navigation.png",
+                        "update": "最后更新时间：2020-9-25"
+                    },
+                    {
+                        "name": "图层选择控件",
+                        "file": "E02LayerControl",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E02LayerControl.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }
+                ]
+                },
+                {
+                    "name": "地图操作",
+                    "iconfont": "iconmap",
+                    "folder": "MapOperation",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                            "name": "视图控制",
+                            "file": "E01MapOperation",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E01MapOperation.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "图层组控制",
+                            "file": "E03LayerGroupControl",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E03LayerGroupControl.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "图层层级控制",
+                            "file": "E09LayerLevelControl",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E09LayerLevelControl.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "当前视图信息",
+                            "file": "E02MapInfomation",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E02MapInfomation.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "当前鼠标逻辑坐标",
+                            "file": "E07ViewWindowPosition",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "E07ViewWindowPosition.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                    {
+                        "name": "地图事件",
+                        "file": "E05MapEvent",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E05MapEvent.png",
+                        "update": "最后更新时间：2020-9-25"
+                    },{
+                        "name": "地图量算",
+                        "file": "E01OriginMeasure",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01OriginMeasure.png",
+                        "update": "最后更新时间：2020-9-25"
+                    },{
+                        "name": "地图打印",
+                        "file": "E06MapExport",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E06MapExport.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "图层探查",
+                        "file": "E08MapLayerProbe",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E08MapLayerProbe.png",
+                        "update": "最后更新时间：2020-9-25"
+                    },
+                    {
+                        "name": "设置地图视图背景",
+                        "file": "E04MapSetBackground",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E04MapSetBackground.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }
+                ]
+                },
+                {
+                    "name": "基础标绘",
+                    "iconfont": "iconmap",
+                    "folder": "GraphicEdit",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                        "name": "图形绘制（指定坐标）",
+                        "file": "E01GraphicDraw",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01GraphicDraw.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "图形绘制（鼠标交互）",
+                        "file": "E02InterActionGraphicDraw",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E02InterActionGraphicDraw.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "获取标绘图形信息",
+                        "file": "E05GetGeomInfo",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E05GetGeomInfo.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "标绘图形样式编辑（鼠标交互）",
+                        "file": "E04ModifyFeatures",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E04ModifyFeatures.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "标绘图层样式编辑",
+                        "file": "E03FeaturesStyle",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E03FeaturesStyle.png",
+                        "update": "最后更新时间：2020-9-25"
+                    },
+                    {
+                        "name": "地图标注",
+                        "file": "E01InterActionMapMark",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01InterActionMapMark.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }
+                ]
+                }
+
+            ]
+        },
+        {
+            "name": "客户端可视化",
+            "iconfont": "iconeye",
+            "folder": "ClientView",
+            "leaffolder": false,
+            "childs": [
+                {
+                    "name": "聚类",
+                    "iconfont": "icontheme",
+                    "folder": "Common",
+                    "leaffolder": true,
+                    "childs": [{
+                        "name": "热力图",
+                        "file": "E01Heatmap",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E01Heatmap.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }, {
+                        "name": "聚合标注",
+                        "file": "E02AddClusterLabels",
+                        "diffcult": "2",
+                        "detail": "",
+                        "icon": "E02AddClusterLabels.png",
+                        "update": "最后更新时间：2020-9-25"
+                    }]
+                },
+                {
+                    "name": "要素动画",
+                    "iconfont": "iconmap1",
+                    "folder": "FeatureAnimation",
+                    "leaffolder": true,
+                    "childs": [{
+                            "name": "要素动画",
+                            "file": "E01FeatureAnimation",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E01FeatureAnimation.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "轨迹动画",
+                            "file": "E02FeatureMove",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E02FeatureMove.png",
+                            "update": "最后更新时间：2020-9-25"
+                        },
+                        {
+                            "name": "航线动画",
+                            "file": "E03FlightAnimation",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "E03FlightAnimation.png",
+                            "update": "最后更新时间：2020-9-25"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "客户端空间分析",
+            "iconfont": "iconsqlserver",
+            "folder": "ClientAnalysis",
+            "leaffolder": true,
+            "childs": [
+                {
+                    "name": "缓冲分析",
+                    "file": "E01Buffer",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E01Buffer.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "泰森多边形构建",
+                    "file": "E02Voronoi",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E02Voronoi.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "Tin三角网构建",
+                    "file": "E03Tin",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E03Tin.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "中心点计算",
+                    "file": "E04Centroid",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E04Centroid.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "空间插值",
+                    "file": "E05Along",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E05Along.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "曲线光滑",
+                    "file": "E06Bezierspline",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E06Bezierspline.png",
+                    "update": "最后更新时间：2019-11-07"
+                },
+                {
+                    "name": "拓扑关系判断",
+                    "file": "E07Intersect",
+                    "diffcult": "3",
+                    "detail": "",
+                    "icon": "E07Intersect.png",
+                    "update": "最后更新时间：2019-11-07"
+                }
+            ]
+        },
+        {
+            "name": "行业特色",
+            "iconfont": "iconeye",
+            "folder": "industry",
+            "leaffolder": false,
+            "childs": [
+                {
+                    "name": "行业标绘",
+                    "iconfont": "iconpostgresql",
+                    "folder": "plot-profess",
+                    "leaffolder": true,
+                    "childs": [
+                        {
+                            "name": "符号库使用",
+                            "file": "plot-symbol",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot-symbol.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "符号库查询",
+                            "file": "plot-symbol-search",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot-symbol-search.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "标绘使用",
+                            "file": "plot2d",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot2d.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "属性编辑",
+                            "file": "plot2d-edit",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot2d.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "图层控制",
+                            "file": "plot2d-layer-control",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot2d-layer-control.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "图层使用",
+                            "file": "plot2d-layer-use",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot2d-layer-use.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "动效设置",
+                            "file": "plot-add-animation",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot-add-animation.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "态势图管理",
+                            "file": "plot-load-animation",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot-load-animation.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "二维态势推演",
+                            "file": "plot2d-animation",
+                            "diffcult": "1",
+                            "detail": "",
+                            "icon": "plot2d-animation.png",
+                            "update": "最后更新时间:2022-03-14"
+                        },
+                        {
+                            "name": "算法注册",
+                            "file": "plot-register",
+                            "diffcult": "2",
+                            "detail": "",
+                            "icon": "plot-register.png",
+                            "update": "最后更新时间:2022-03-14"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

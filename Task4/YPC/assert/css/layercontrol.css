@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+}
+#mapCon {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+#mapCon .ol-zoom .ol-zoom-out {
+    margin-top: 204px;
+}
+#mapCon .ol-zoomslider {
+    background-color: transparent;
+    top: 2.3em;
+}
+#mapCon .ol-touch .ol-zoom .ol-zoom-out {
+    margin-top: 212px;
+}
+#mapCon .ol-touch .ol-zoomslider {
+    top: 2.75em;
+}
+#mapCon .ol-zoom-in .ol.has-tooltip:hover[role=tooltip],
+#mapCon .ol-zoom-in .ol-has-tooltip:focus[role=tooltip] {
+    top: 3px;
+}
+#mapCon .ol-zoom-out .ol-has-tooltip:hover[role=tooltip],
+#mapCon .ol-zoon-out .ol-has-out-tooltip:focus[role=tooltip] {
+    top: 232px;
+}
+#mapCon .ol-zoom-extent {
+    top: 280px;
+}
+
+/* 图层控件层样式设置 */
+.layerControl {
+    position: absolute;
+    bottom: 5px;
+    min-width: 200px;
+    max-height: 380px;
+    right: 10px;
+    /* top: 5px; */
+    /*在地图容器中的层，要设置z-index的值让其显示在地图上层*/
+    z-index: 2001;
+    color: #1b1a1a;
+    background-color:rgba(175, 210, 253, 0.37);
+    /*边缘的宽度*/
+    border-width: 10px;
+    /*圆角的大小 */
+    border-radius: 10px;
+    /*边框颜色*/
+    border-color: #000 #000 #000 #000;
+}
+
+.layerControl .title {
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+    font-family: "Source Sans Pro", sans-serif;
+}
+.layerTree{
+    padding-inline-start: 15px;
+}
+.layerTree li {
+    list-style: none;
+    margin: 5px 10px;
+    font-size: 15px;
+}
+li .layer{
+    position: absolute;
+    margin-top: 0px;
+    
+    
+}

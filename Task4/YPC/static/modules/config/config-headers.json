@@ -1,0 +1,623 @@
+[
+    {
+        "title": "首页",
+        "icon": "iconhome",
+        "menus": [
+            {
+                "title": "概述",
+                "icon": "icongaishu",
+                "links": [["核心服务", "详细服务", "调用方式", "四大引擎选择", "下载"]],
+                "hightlights": [[false, false, false, false, true]],
+                "routes": [["/total/core", "/total/detail", "/total/use", "/total/select", "/total/download"]]
+            },
+            {
+                "title": "插件",
+                "icon": "iconchajian",
+                "links": [["插件列表", "详细图表", "插件标签", "提交bug"]],
+                "hightlights": [[false, false, false, false, false]],
+                "routes": [["/total/plugins", "/total/detailChart", "/total/pluginTags", "/total/bugCommit"]]
+            },
+            {
+                "title": "协议",
+                "icon": "iconxieyi",
+                "links": [["epsg", "geojson"]],
+                "hightlights": [[false, false]],
+                "routes": [["/standard/epsg", "/standard/geojson"]]
+            }
+        ]
+    },
+    {
+        "title": "组件",
+        "icon": "iconpuzzle-piece-plugin",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao",
+                "links": [["产品介绍"]],
+                "hightlights": [[true]],
+                "routes": [
+                    [
+                        "/produce/component/introduction",
+                        "/produce/component/download",
+                        "/produce/component/developEnvironment",
+                        "/produce/component/authorization",
+                        "/produce/component/moduleIntroduction",
+                        "/produce/component/relatedProduct",
+                        "/produce/component/thirdPartyProducts",
+                        "/produce/component/newFeatures",
+                        "/produce/component/startDevelop"
+                    ]
+                ]
+            },
+            {
+                "title": "开发文档",
+                "icon": "iconkaifazhinan",
+                "links": [
+                    [
+                        "组件开发入门",
+                        "Cesium开发文档",
+                        "MapboxGL开文档",
+                        "UI开文档"
+                    ]
+                ],
+                "hightlights": [[true]],
+                "routes": [["/guide/component/development_component", "http://120.78.82.242:8891", "http://120.78.82.242:8892", "http://120.78.82.242:8893","", "", "", "", "", "", "", ""]]
+            },
+            {
+                "title": "常见问题",
+                "icon": "iconchangjianwenti",
+                "hightlights": [[false, false, false, false, true, true]],
+                "links": [
+                    ["Cesium-基本引入", "Cesium-内存溢出", "Cesium-路由切换", "MapboxGL-基本引入", "MapboxGL-JAVA版IGS", "MapboxGL-地图模糊", "MapboxGL-绘制溢出"]
+                ],
+                "routes": [
+                    [
+                        "/fqa/vue-cesium/vue/import/index",
+                        "/fqa/vue-cesium/vue/memery/index",
+                        "/fqa/vue-cesium/vue/route/index",
+                        "/fqa/vue-mapboxgl/vue/import",
+                        "/fqa/vue-mapboxgl/vue/vectotLayer",
+                        "/fqa/vue-mapboxgl/tilesize/tilesize",
+                        "/fqa/vue-mapboxgl/draw/overflow"
+                    ]
+                ],
+                "type":"helper"
+            },
+            {
+                "title": "开发示例",
+                "icon": "iconzaixianshili",
+                "links": [
+                    [
+                        "StoryBook"
+                    ]
+                ],
+                "hightlights": [[true, true, true]],
+                "routes": [["/storybook/index.html?path=/story/基础介绍-0-介绍--page"]]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "links": [["Cesium-API", "MapboxGL-API", "UI-API"]],
+                "hightlights": [[true, false, true]],
+                "routes": [["http://120.78.82.242:8891", "http://120.78.82.242:8892", "http://120.78.82.242:8893"]]
+            }
+        ]
+    },
+    {
+        "title": "Cesium",
+        "icon": "iconsatellite",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao",
+                "links": [["产品介绍"]],
+                "hightlights": [[true]],
+                "routes": [
+                    [
+                        "/produce/cesium/produce_cesium",
+                        "/produce/cesium/download",
+                        "/produce/cesium/developEnvironment",
+                        "/produce/cesium/authorization",
+                        "/produce/cesium/moduleIntroduction",
+                        "/produce/cesium/relatedProduct",
+                        "/produce/cesium/thirdPartyProducts",
+                        "/produce/cesium/newFeatures",
+                        "/produce/cesium/startDevelop"
+                    ]
+                ]
+            },
+            {
+                "title": "开发文档",
+                "icon": "iconkaifazhinan",
+                "links": [
+                    [
+                        "开发入门",
+                        "开发指南"
+                    ]
+                ],
+                "hightlights": [[true]],
+                "routes": [["/guide/cesium/MapGIS Client for JavaScript（Cesium）开发入门","/guide/cesium/development_cesium", "", "", "", "", "", "", "", "", "", "", ""]]
+            },
+            {
+                "title": "开发教程",
+                "icon": "iconchangjianwenti",
+                "hightlights": [[false, false]],
+                "links": [["开发指南", "接口升级"]],
+                "routes": [
+                    [
+                        "/guideMulti/cesium/development_cesium",
+                        "/guideMulti/cesium/development_cesium_update"
+                    ]
+                ],
+                "type":"guide"
+            },
+            {
+                "title": "常见问题",
+                "icon": "iconchangjianwenti",
+                "hightlights": [[false, true, true]],
+                "links": [["OGC-WMTS", "三维模型", "瓦片错级"]],
+                "routes": [
+                    [
+                        "/fqa/cesium/ogc/wmts/WMTS",
+                        "/fqa/cesium/model/gltf",
+                        "/fqa/cesium/tile/offset"
+                    ]
+                ],
+                "type":"helper"
+            },
+            {
+                "title": "开发示例",
+                "icon": "iconzaixianshili",
+                "hightlights": [[false, false, false, false, false, false, false, false, false, false, false, false, false, false]],
+                "links": [
+                    [
+                        "M3D协议",
+                        "互联网地图",
+                        "OGC服务",
+                        "MapGIS地图服务",
+                        "场景",
+                        "三维空间分析",
+                        "轨迹模拟",
+                        "图形绘制",
+                        "工具",
+                        "查询",
+                        "客户端可视化",
+                        "客户端-Echarts",
+                        "客户端-MapV",
+                        "客户端空间分析"
+                    ]
+                ],
+                "routes": [
+                    [
+                        "/example-gallery/cesium#m3d",
+                        "/example-gallery/cesium#third",
+                        "/example-gallery/cesium#ogc",
+                        "/example-gallery/cesium#mapgis",
+                        "/example-gallery/cesium#scene",
+                        "/example-gallery/cesium#analysis",
+                        "/example-gallery/cesium#track",
+                        "/example-gallery/cesium#drawGraphic",
+                        "/example-gallery/cesium#measure",
+                        "/example-gallery/cesium#query",
+                        "/example-gallery/cesium#clientView-heatmap",
+                        "/example-gallery/cesium#clientView_Echarts",
+                        "/example-gallery/cesium#clientView_MapV",
+                        "/example-gallery/cesium#clientAnalysis"
+                    ]
+                ]
+            },
+            {
+                "title": "开发示例-新",
+                "icon": "iconzaixianshili",
+                "hightlights": [[true, true, true, true]],
+                "links": [
+                    [
+                        "M3D协议-2.0",
+                        "工具",
+                        "数据加载",
+                        "分析"
+                    ]
+                ],
+                "routes": [
+                    [
+                        "/example-gallery/cesium-new#m3d",
+                        "/example-gallery/cesium-new#tool",
+                        "/example-gallery/cesium-new#data",
+                        "/example-gallery/cesium-new#analysis"
+                    ]
+                ]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "links": [
+                    ["客户端数据服务", "客户端可视化", "客户端渲染", "客户端事件管理", "客户端公共方法", "客户端视图管理", "客户端可视化分析"],
+                    ["Cesium", "TurfJs"]
+                ],
+                "hightlights": [
+                    [false, false, false, false, false, false, false],
+                    [false, false]
+                ],
+                "routes": [
+                    [
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E6%2595%25B0%25E6%258D%25AE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E6%25B8%25B2%25E6%259F%2593.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E4%25BA%258B%25E4%25BB%25B6%25E7%25AE%25A1%25E7%2590%2586.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%2585%25AC%25E5%2585%25B1%25E6%2596%25B9%25E6%25B3%2595.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E8%25A7%2586%25E5%259B%25BE%25E7%25AE%25A1%25E7%2590%2586.html",
+                        "/docs/cesium/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596%25E5%2588%2586%25E6%259E%2590.html"
+                    ],
+                    ["/docs/other/mapgis-cesium/index.html", "http://turfjs.org/"]
+                ]
+            }
+        ]
+    },
+    {
+        "title": "MapboxGL",
+        "icon": "iconmapbox",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao",
+                "links": [["产品介绍"]],
+                "hightlights": [[true]],
+                "routes": [
+                    [
+                        "/produce/mapboxgl/produce_mapboxgl",
+                        "/produce/mapboxgl/download",
+                        "/produce/mapboxgl/developEnvironment",
+                        "/produce/mapboxgl/authorization",
+                        "/produce/mapboxgl/moduleIntroduction",
+                        "/produce/mapboxgl/relatedProduct",
+                        "/produce/mapboxgl/thirdPartyProducts",
+                        "/produce/mapboxgl/newFeatures",
+                        "/produce/mapboxgl/startDevelop"
+                    ]
+                ]
+            },
+            {
+                "title": "开发文档",
+                "icon": "iconkaifazhinan",
+                "links": [
+                    [
+                        "开发入门",
+                        "开发指南"
+                    ]
+                ],
+                "hightlights": [[true]],
+                "routes": [["/guide/mapboxgl/development_mapboxgl", "", "", "", "", "", "", "", "", "", "", ""]]
+            },
+            {
+                "title": "常见问题",
+                "icon": "iconchangjianwenti",
+                "hightlights": [[true, false, false, false, false, false, false, true, true]],
+                "links": [
+                    ["底图模糊", "OGC-WMTS", "ArcServer-WMS", "ArcServer-要素图层", "矢量瓦片-介绍", "矢量瓦片-离线部署", "矢量瓦片-几何&符号", "矢量瓦片-发布", "矢量瓦片-MBTiles"]
+                ],
+                "routes": [
+                    [
+                        "/fqa/mapboxgl/tilesize/tilesize",
+                        "/fqa/mapboxgl/ogc/wmts/WMTS",
+                        "/fqa/mapboxgl/arcserver/wms/index",
+                        "/fqa/mapboxgl/arcserver/featurelayer/index",
+                        "/fqa/mapboxgl/vectortile/index",
+                        "/fqa/mapboxgl/vectortile/deploy",
+                        "/fqa/mapboxgl/vectortile/style",
+                        "/fqa/mapboxgl/vectortile/publish",
+                        "/fqa/mapboxgl/vectortile/mbtiles"
+                    ]
+                ],
+                "type":"helper"
+            },
+            {
+                "title": "开发示例",
+                "icon": "iconzaixianshili",
+                "hightlights": [[false, false, true, false, false, false, false, false, false, false, false, false]],
+                "links": [
+                    [
+                        "互联网地图",
+                        "OGC服务",
+                        "ArcGIS服务",
+                        "地图",
+                        "要素",
+                        "量算",
+                        "专题图",
+                        "空间分析",
+                        "客户端可视化",
+                        "客户端空间分析",
+                        "DataStore",
+                        "行业特色"
+                    ]
+                ],
+                "routes": [
+                    [
+                        "/example-gallery/mapboxgl#internet",
+                        "/example-gallery/mapboxgl#ogc",
+                        "/example-gallery/mapboxgl#arcgis-mapserver#arcgismapserver",
+                        "/example-gallery/mapboxgl#mapgis-igserver#map",
+                        "/example-gallery/mapboxgl#mapgis-igserver#feature",
+                        "/example-gallery/mapboxgl#mapgis-igserver#calc",
+                        "/example-gallery/mapboxgl#mapgis-igserver#theme",
+                        "/example-gallery/mapboxgl#mapgis-igserver#analysis",
+                        "/example-gallery/mapboxgl#client-view#vectortile",
+                        "/example-gallery/mapboxgl#client-analysis",
+                        "/example-gallery/mapboxgl#datastore#elasticsearch",
+                        "/example-gallery/mapboxgl#industry#search"
+                    ]
+                ]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "hightlights": [[false, false, false, false, false, false, false, false], [false]],
+                "links": [["地图服务", "OGC服务", "目录服务", "要素服务", "几何分析服务", "专题图服务", "分析服务", "客户端可视化"], ["Mapbox-GL"]],
+                "routes": [
+                    [
+                        "./docs/mapboxgl/module-%25E5%259C%25B0%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-OGC%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E7%259B%25AE%25E5%25BD%2595%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E8%25A6%2581%25E7%25B4%25A0%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E5%2587%25A0%25E4%25BD%2595%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E4%25B8%2593%25E9%25A2%2598%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/mapboxgl/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596.html"
+                    ],
+                    ["https://docs.mapbox.com/mapbox-gl-js/api/"]
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Leaflet",
+        "icon": "iconLeaf",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao",
+                "links": [["产品介绍"]],
+                "hightlights": [[true]],
+                "routes": [
+                    [
+                        "/produce/leaflet/produce_leaflet",
+                        "/produce/leaflet/download",
+                        "/produce/leaflet/developEnvironment",
+                        "/produce/leaflet/authorization",
+                        "/produce/leaflet/moduleIntroduction",
+                        "/produce/leaflet/relatedProduct",
+                        "/produce/leaflet/thirdPartyProducts",
+                        "/produce/leaflet/newFeatures",
+                        "/produce/leaflet/startDevelop"
+                    ]
+                ]
+            },
+            {
+                "title": "开发文档",
+                "icon": "iconkaifazhinan",
+                "links": [
+                    [
+                        "开发入门",
+                        "开发指南"
+                    ]
+                ],
+                "hightlights": [[true]],
+                "routes": [["/guide/leaflet/MapGIS Client for JavaScript（Leaflet）开发入门","/guide/leaflet/development_leaflet", "", "", "", "", "", "", "", "", "", "", ""]]
+            },
+            {
+                "title": "开发示例",
+                "icon": "iconzaixianshili",
+                "links": [["互联网地图", "OGC服务", "地图", "要素", "量算", "专题图", "空间分析", "客户端可视化", "客户端空间分析", "ElasticSearch"]],
+                "hightlights": [[false, false, false, false, false, false, false, false, false, false]],
+                "routes": [
+                    [
+                        "/example-gallery/leaflet#internet",
+                        "/example-gallery/leaflet#ogc",
+                        "/example-gallery/leaflet#mapgis-igserver#map",
+                        "/example-gallery/leaflet#mapgis-igserver#feature",
+                        "/example-gallery/leaflet#mapgis-igserver#calc",
+                        "/example-gallery/leaflet#mapgis-igserver#theme",
+                        "/example-gallery/leaflet#mapgis-igserver#analysis",
+                        "/example-gallery/leaflet#client-view#vectortile",
+                        "/example-gallery/leaflet#client-analysis",
+                        "/example-gallery/leaflet#elasticsearch"
+                    ]
+                ]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "links": [["地图服务", "OGC服务", "目录服务", "要素服务", "几何分析服务", "专题图服务", "分析服务", "客户端可视化"], ["Leaflet"]],
+                "hightlights": [[false, false, false, false, false, false, false, false], [false]],
+                "routes": [
+                    [
+                        "./docs/leaflet/module-%25E5%259C%25B0%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-OGC%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E7%259B%25AE%25E5%25BD%2595%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E8%25A6%2581%25E7%25B4%25A0%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E5%2587%25A0%25E4%25BD%2595%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E4%25B8%2593%25E9%25A2%2598%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/leaflet/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596.html"
+                    ],
+                    ["https://leafletjs.com/reference-1.7.1.html"]
+                ]
+            }
+        ]
+    },
+    {
+        "title": "Openlayers",
+        "icon": "iconlayers",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao",
+                "links": [["产品介绍"]],
+                "hightlights": [[true]],
+                "routes": [
+                    [
+                        "/produce/openlayers/produce_ol",
+                        "/produce/openlayers/download",
+                        "/produce/openlayers/developEnvironment",
+                        "/produce/openlayers/authorization",
+                        "/produce/openlayers/moduleIntroduction",
+                        "/produce/openlayers/relatedProduct",
+                        "/produce/openlayers/thirdPartyProducts",
+                        "/produce/openlayers/newFeatures",
+                        "/produce/openlayers/startDevelop"
+                    ]
+                ]
+            },
+            {
+                "title": "开发文档",
+                "icon": "iconkaifazhinan",
+                "links": [
+                    [
+                        "开发入门",
+                        "开发指南"
+                    ]
+                ],
+                "hightlights": [[true]],
+                "routes": [["/guide/openlayers/MapGIS Client for JavaScript（OpenLayers）开发入门","/guide/openlayers/development_ol", "", "", "", "", "", "", "", "", "", "", ""]]
+            },
+            {
+                "title": "开发示例 - 组件",
+                "icon": "iconzaixianshili",
+                "links": [
+                    [
+                        "地图控件",
+                        "地图操作",
+                        "图形操作",
+                        "地图标注",
+                        "互联网地图",
+                        "OGC",
+                        "地图服务",
+                        "图层要素编辑",
+                        "文档要素编辑",
+                        "图层要素查询",
+                        "文档要素查询",
+                        "几何量算",
+                        "投影变换"
+                    ],
+                    ["专题图", "通用可视化", "要素动画", "几何分析", "空间分析", "网络分析", "客户端空间分析"]
+                ],
+                "hightlights": [
+                    [false, false, false, false, false, false, false, false, false, false, false, false, false],
+                    [false, false, false, false, false, false, false]
+                ],
+                "routes": [
+                    [
+                        "/example-gallery/openlayers#base#MapControl",
+                        "/example-gallery/openlayers#base#MapOperation",
+                        "/example-gallery/openlayers#base#map#GraphicEdit",
+                        "/example-gallery/openlayers#base#MapMark",
+                        "/example-gallery/openlayers#ThirdMap",
+                        "/example-gallery/openlayers#OGC",
+                        "/example-gallery/openlayers#IGServer#MapService",
+                        "/example-gallery/openlayers#IGServer#LayerFeatureEdit",
+                        "/example-gallery/openlayers#IGServer#DocFeatureEdit",
+                        "/example-gallery/openlayers#IGServer#LayerFeatureQuery",
+                        "/example-gallery/openlayers#IGServer#DocFeatureQuery",
+                        "/example-gallery/openlayers#IGServer#Measure",
+                        "/example-gallery/openlayers#IGServer#TopService"
+                    ],
+                    [
+                        "/example-gallery/openlayers#IGServer#ThemeService",
+                        "/example-gallery/openlayers#ClientView#Common",
+                        "/example-gallery/openlayers#ClientView#FeatureAnimation",
+                        "/example-gallery/openlayers#IGServer#ProjectionService",
+                        "/example-gallery/openlayers#IGServer#AnalysisService",
+                        "/example-gallery/openlayers#IGServer#NetService",
+                        "/example-gallery/openlayers#ClientAnalysis"
+                    ]
+                ]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "links": [["地图服务", "OGC服务", "目录服务", "要素服务", "几何分析服务", "专题图服务", "分析服务", "客户端可视化"], ["OpenLayers"]],
+                "hightlights": [[false, false, false, false, false, false, false, false], [false]],
+                "routes": [
+                    [
+                        "./docs/openlayers/module-%25E5%259C%25B0%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-OGC%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E7%259B%25AE%25E5%25BD%2595%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E7%259B%25AE%25E5%25BD%2595%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E5%2587%25A0%25E4%25BD%2595%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E4%25B8%2593%25E9%25A2%2598%25E5%259B%25BE%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E5%2588%2586%25E6%259E%2590%25E6%259C%258D%25E5%258A%25A1.html",
+                        "./docs/openlayers/module-%25E5%25AE%25A2%25E6%2588%25B7%25E7%25AB%25AF%25E5%258F%25AF%25E8%25A7%2586%25E5%258C%2596.html"
+                    ],
+                    ["https://openlayers.org/en/latest/apidoc/"]
+                ]
+            }
+        ]
+    },
+    {
+        "title": "MapGISPlot",
+        "icon": "iconmap2",
+        "menus": [
+            {
+                "title": "产品",
+                "icon": "iconchanpinjieshao"
+            },
+            {
+                "title": "开发示例 - vue",
+                "icon": "iconzaixianshili",
+                "links": [
+                    [
+                        "标绘-二维",
+                        "态势推演-二维",
+                        "标绘-三维",
+                        "态势推演-三维",
+                        "标绘-二三维联动",
+                        "态势推演-二三维联动"
+                    ]
+                ],
+                "hightlights": [
+                    [false]
+                ],
+                "routes": [
+                    [
+                        "/storybook/index.html?path=/story/二维-图层-标绘-二维标绘--二维标绘",
+                        "/storybook/index.html?path=/story/二维-图层-标绘-态势推演--态势推演",
+                        "/storybook/index.html?path=/story/三维-图层-标绘-三维标绘--三维标绘",
+                        "/storybook/index.html?path=/story/三维-图层-标绘-态势推演--态势推演",
+                        "/storybook/index.html?path=/story/三维-场景子组件-二三维联动-标绘--标绘",
+                        "/storybook/index.html?path=/story/三维-场景子组件-二三维联动-态势推演--态势推演"
+                    ]
+                ]
+            },
+            {
+                "title": "开发示例 - 纯JS",
+                "icon": "iconzaixianshili",
+                "links": [
+                    [
+                        "二维标绘",
+						"三维标绘"
+                    ]
+                ],
+                "hightlights": [
+                    [false]
+                ],
+                "routes": [
+                    [
+                        "/example-gallery/webclient-plot#Plot2D",
+						"/example-gallery/webclient-plot#Plot3D"
+                    ]
+                ]
+            },
+            {
+                "title": "开发API",
+                "icon": "iconsanfangAPI",
+                "links": [["PLOT-API", "标绘图元管理工具"]],
+                "hightlights": [[false]],
+                "routes": [
+                    [
+                        "http://192.168.82.89:8093",
+                        "http://192.168.82.89:8093/tutorial-9.%E5%88%A0%E9%99%A4%E6%A0%87%E7%BB%98%E5%9B%BE%E5%85%83%E7%A4%BA%E4%BE%8B%E4%BB%A3%E7%A0%81.html"
+                    ]
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title> 2D map</title>
+    <!--当前示例页面样式表引用-->
+    <link rel="stylesheet" href="./static/modules/openlayers/example/style.css" />
+    <link rel="stylesheet" href="./assert/css/color.css" />
+    <link rel="stylesheet" href="./assert/css/layercontrol.css">
+    <link rel="stylesheet" href="./assert/css/colorbar.css">
+    <link rel="stylesheet" href="./assert/css/draw.css">
+
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <script include="jquery,jquery-easyui" src="./static/libs/include-lib-local.js"></script>
+    <script src="./static/libs/include-openlayers-local.js"></script>
+    <script include="jquery" src="./assert/js/control.js"></script>
+    <script include="jquery" src="./assert/js/draw.js"> </script>
+    <script src="./assert/js/modify.js"></script>
+    <script include="jquery" src="./assert/js/init.js"> </script>
+
+    <!-- <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+    <script type="module" src="https://js.arcgis.com/calcite-components/1.0.7/calcite.esm.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/calcite-components/1.0.7/calcite.css"/>
+    <script src="https://js.arcgis.com/4.26/"></script> -->
+ 
+      
+    <script type="text/javascript">
+        var vectorSource=null;
+        var vectorLayer = null;
+        var drawTool = null;
+        var map = null ;
+        var commonStyle = null ;
+        var arrowStyle = null ; 
+        var selectInteraction=null;
+        var modifyInteraction=null;
+        var styleall = null ;
+
+       $(document).ready(function(){
+        $(".li1").mouseover(function(){
+                $(this).find('.drop-down').slideDown(300);
+                $(this).find(".accent").addClass("animate");
+                $(this).find(".item").css("color","#ffffff");
+            }).mouseleave(function(){
+                $(this).find(".drop-down").slideUp(300);
+                $(this).find(".accent").removeClass("animate");
+                $(this).find(".item").css("color","#000");
+            });
+        })
+    </script>
+
+
+</head>
+
+<body onload="init()">
+    
+    <div id="mapCon">
+        <div id="layerControl" class="layerControl">
+            <div class="title"><label>图层列表</label></div>
+            <ul id="layerTree" class="layerTree"></ul>
+        </div>
+    </div>
+
+
+
+    <ul class="ul1">
+        <li class="li1">
+            <a href="#" class="a1">绘画
+                
+                <i class="fa fa-chevron-down"></i>
+                <span class="accent"></span>
+            </a>
+          <span class="accent"></span>
+          <ul class="drop-down" >
+            <li onclick="addGeomPoint()"><a class="a1" href="#">点</a></li>
+            <li onclick="addGeomLine()"><a class="a1" href="#">线</a></li>
+            <li onclick="addGeomCircle()"><a class="a1" href="#">圆</a></li>
+            <li onclick="addGeomPolygon()"><a class="a1" href="#">多边形</a></li>
+            <li onclick="end()"><a class="a1" href="#">结束</a></li>
+            <li onclick="deleteAll()"><a class="a1" href="#">清空</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+    <div id="editGeomStyle" class="easyui-window" data-options="title:'要素样式修改或移动',closed:false,maximizable:false,
+    minimizable:false,closable:false,
+    resizable:false,shadow:false"
+     style="width: 310px; padding: 2px; left: 60px; top: 16px; ">
+        <div id="tt" class="easyui-tabs" data-options="headerWidth:26,tabPosition:'left',plain:true,border:true" style="width: 100%">
+            <div onclick="point()" title="点样式" data-options="iconCls:'icon-point'" style="padding: 5px;">
+                <fieldset id="layer0">
+                    <legend>点大小</legend>
+                    <label class="tableTxt" style="margin-bottom: 10px;"> </label>
+                    <input class="easyui-slider" style="width:200px ; " data-options="showTip:true"  id="points-size"><br />
+                
+                </fieldset>
+
+                <fieldset id="layer0">
+                    <legend>边框宽度</legend>
+                    <label class="tableTxt">  </label>
+                    <input class="easyui-slider" style="width:200px ; " data-options="showTip:true"  id="points-stroke-width"><br />
+                  
+                </fieldset>
+                <fieldset id="layer01">
+                    <legend>图形颜色</legend>
+                    <label class="tableTxt" style="float: left;">填充颜色:</label><input  class="input2" type="color" id="points-fill-color" /><br />
+                    <label class="tableTxt" style="float: left;">边框颜色:</label><input  class="input2" type="color"  id="points-stroke-color" /><br />
+                </fieldset>
+                <form action="" style="text-align: center;padding-top: 2px;">
+                    <a  href="javascript:void(0)" class="easyui-linkbutton" onclick="modifystyle()" style="width:120px">进入修改样式</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="end1()" style="width:90px">结束修改样式</a>
+                    
+                </form>
+            </div>
+
+            <div onclick="line()" title="线样式" data-options="iconCls:'icon-line'" style="padding: 5px;">
+                <fieldset id="layer1">
+                    <legend>线宽</legend>
+                    <input class="easyui-slider" style="width:200px ; " data-options="showTip:true"  id="lines-stroke-width"><br />
+                   
+                </fieldset>
+                <fieldset id="layer02">
+                    <legend>图形颜色</legend>
+                    <label class="tableTxt" style="float: left;">线颜色:</label><input class="input2" type="color"  id="lines-stroke-color" /><br />
+                </fieldset>
+                <form action="" style="text-align: center;padding-top: 2px;">
+                    <a  href="javascript:void(0)" class="easyui-linkbutton" onclick="modifystyle()" style="width:120px">进入修改样式</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="end1()" style="width:90px">结束修改样式</a>
+                    
+                </form>
+            </div>
+
+            <div onclick="polygan()" title="区样式" data-options="iconCls:'icon-polygon'" style="padding: 5px;">
+                <fieldset id="layer2">
+                    <legend>边框宽度</legend>
+                   
+                    <input class="easyui-slider" style="width:200px ; " data-options="showTip:true"  id="polygons-stroke-width"><br />
+                
+                </fieldset>
+                <fieldset id="layer03">
+                    <legend>图形颜色</legend>
+                    <label class="tableTxt" style="float: left;">填充颜色:</label><input  class="input2" type="color" id="polygons-fill-color" /><br />
+                    <label class="tableTxt" style="float: left;">边框颜色:</label><input  class="input2" type="color"  id="polygons-stroke-color" /><br />
+                </fieldset>
+                <form action="" style="text-align: center;padding-top: 2px;">
+                    <a  href="javascript:void(0)" class="easyui-linkbutton" onclick="modifystyle()" style="width:120px">进入修改样式</a>
+                    <a href="javascript:void(0)" class="easyui-linkbutton" onclick="end1()" style="width:90px">结束修改样式</a>
+                    
+                </form>
+            </div>
+        </div>
+        <form action="" style="text-align: center;padding-top: 2px;">
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="trans()" style="width:90px">进入移动模式</a>
+            <a href="javascript:void(0)" class="easyui-linkbutton" onclick="closeFeature()" style="width:90px">结束移动模式</a>
+        </form>
+    </div>
+
+   <div style="position: absolute; font-size: 30px;text-align:center; line-height:100px;left: 10px; bottom: 100px; height: 100px;width: 100px; background-color:rgba(175, 210, 253, 0.37); ;" >
+        <a style=" text-decoration: none; color: black;" href="./map3D.html">3D</a>
+   </div>
+
+ <script>
+    function switchMenuStatus(div, menuitemFrameID) {
+        var temDivs = document.getElementsByClassName('optmain');
+        if (temDivs.length > 0) {
+            for (var i = 0; i < temDivs.length; i++) {
+                if (temDivs[i] === div) {
+                    var status = div.getAttribute("status");
+                    if (status == "unactive") {
+                        div.setAttribute("status", "active");
+                        var tem_spans = div.getElementsByTagName("span");
+                        var tem_ems = div.getElementsByTagName("em");
+                        tem_spans[0].className = "active";
+                        tem_ems[0].className = "active";
+
+                        //显示菜单项
+                        DisplayMenuItem(true, menuitemFrameID);
+
+                    }
+                    else {
+                        div.setAttribute("status", "unactive");
+                        var tem_spans = div.getElementsByTagName("span");
+                        var tem_ems = div.getElementsByTagName("em");
+                        tem_spans[0].className = "";
+                        tem_ems[0].className = "";
+
+                        //隐藏菜单项
+                        DisplayMenuItem(false, menuitemFrameID);
+                    }
+                }
+                else {
+                    var status = temDivs[i].getAttribute("status");
+                    if (status == "active") {
+                        temDivs[i].setAttribute("status", "unactive");
+                        var tem_spans = temDivs[i].getElementsByTagName("span");
+                        var tem_ems = temDivs[i].getElementsByTagName("em");
+                        tem_spans[0].className = "";
+                        tem_ems[0].className = "";
+                    }
+                }
+            }
+        }
+    }
+
+    function DisplayMenuItem (isDisplay, iframeID) {
+        var menuItemFrame = document.getElementById(iframeID);
+        if (menuItemFrame != null) {
+            if (isDisplay) {
+                var temDivs = document.getElementsByClassName('menuStrip');
+                if (temDivs.length > 0) {
+                    for (var i = 0; i < temDivs.length; i++) {
+                        if (temDivs[i] != menuItemFrame) {
+                            temDivs[i].style.display = "none";
+                        }
+                    }   
+                }
+                menuItemFrame.style.display = "";
+            }
+            else {
+                menuItemFrame.style.display = "none";
+            }
+        }
+    };
+ </script>
+</body>
+
+
+
+</html>

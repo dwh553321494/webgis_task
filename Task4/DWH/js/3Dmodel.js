@@ -69,8 +69,6 @@ const modelAsMercatorCoordinate = mapboxgl.MercatorCoordinate.fromLngLat(
     modelOrigin,
     modelAltitude
 );
-     
-// transformation parameters to position, rotate and scale the 3D model onto the map
 const modelTransform = {
 translateX: modelAsMercatorCoordinate.x,
 translateY: modelAsMercatorCoordinate.y,
@@ -78,15 +76,11 @@ translateZ: modelAsMercatorCoordinate.z,
 rotateX: modelRotate[0],
 rotateY: modelRotate[1],
 rotateZ: modelRotate[2],
-/* Since the 3D model is in real world meters, a scale transform needs to be
-* applied since the CustomLayerInterface expects units in MercatorCoordinates.
-*/
 scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
 };
      
 const THREE = window.THREE;
      
-// configuration of the custom layer for a 3D model per the CustomLayerInterface
 const customLayer = {
     id: '3d-model',
     type: 'custom',
@@ -95,7 +89,6 @@ const customLayer = {
         this.camera = new THREE.Camera();
         this.scene = new THREE.Scene();
         
-        // create two three.js lights to illuminate the model
         const directionalLight = new THREE.DirectionalLight(0xffffff);
         directionalLight.position.set(0, 1000, 1000).normalize();
         this.scene.add(directionalLight);
@@ -103,14 +96,6 @@ const customLayer = {
         const directionalLight2 = new THREE.DirectionalLight(0xffffff);
         directionalLight2.position.set(0, 1000, -1000).normalize();
         this.scene.add(directionalLight2);
-
-        // const directionalLight3 = new THREE.DirectionalLight(0xffffff);
-        // directionalLight3.position.set(-10, -10, 10).normalize();
-        // this.scene.add(directionalLight3);
-
-        // const directionalLight4 = new THREE.DirectionalLight(0xffffff);
-        // directionalLight4.position.set(-10, 10, 10).normalize();
-        // this.scene.add(directionalLight4);
         
         const loader = new THREE.GLTFLoader();
         loader.load(

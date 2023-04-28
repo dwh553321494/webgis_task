@@ -1,0 +1,88 @@
+.list-container {
+    display: inline-block;
+    position: absolute;
+    left: 100px;
+    border: 1px solid #fdfbfb;
+    padding: 10px;
+    width: 200px;
+    height: 20px;
+    z-index: 10000;
+  }
+  
+  .list-container h3 {
+    margin: 0;
+    padding-bottom: 5px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .list-container ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .list-container li {
+    padding: 5px;
+    background-color: #fbfbfb;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .list-container li:hover {
+    background-color: #e87575;
+  }
+
+
+.ol-mouse-position {
+    top: 95%;
+    right: 8px;
+    position: absolute;
+}
+
+.panel-body {
+    background-color: #a99c9c1c;
+    color: #000000;
+    font-size: 8px;
+}
+
+.tableTxt {
+    width: 45%;
+    
+    font-size: 8px;
+    font-family: monospace;
+}
+.input1 {
+    height: 10px;
+    display: block;
+    width: 50%;
+    font-size: 8px;
+}
+br {
+    display: inline;
+    line-height: 2px;
+}
+/* .title {
+    color: Red;
+} */
+
+.easyui-tabs .tabs-inner {
+    padding: 20px 6px !important;
+    line-height: 16px !important;
+    height: auto !important;
+}
+
+.easyui-tabs .tabs-inner .tabs-title {
+    white-space: normal;
+}
+
+.easyui-tabs .tabs-inner .tabs-with-icon {
+    padding-left: 0px;
+}
+
+.easyui-tabs .tabs-inner .tabs-icon {
+    left: 5px;
+    top: 13%;
+}
+select {
+    font-size: 8px;
+}

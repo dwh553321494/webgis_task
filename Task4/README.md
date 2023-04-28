@@ -1,3 +1,7 @@
+[toc]
+
+<div style=”page-break-after: always;”></div>
+
 ##  实习任务
 
 1、 选择一种公共地图资源，加载地图服务作为背景图。
@@ -14,6 +18,26 @@
 
 7、 试着通过GeoServer发布一个地图，在自己的前端实现调用。（可选）
 
+##  GeoServer
+
+GeoServer是一个免费开源的地理数据服务器，可以发布空间数据服务（例如Web Map Service、Web Feature Service和Web Coverage Service），以使客户端应用程序可以通过网络访问和使用这些数据。它支持多种数据格式和空间数据库，并提供了强大的样式和渲染选项来创建漂亮的地图。GeoServer还支持安全机制，可以控制用户和组的访问权限。
+
+GeoServer的主要功能和作用包括：
+
+1.数据发布：GeoServer可以发布多种空间数据服务，如WMS、WFS、WCS等。
+
+数据存储：GeoServer可以连接多种数据源，如PostGIS、Oracle Spatial、ArcSDE等，以及GeoTIFF、Shapefile等文件格式。。
+
+2.样式管理：GeoServer可以通过内置的样式编辑器或使用CSS、SLD等来创建、编辑和管理样式。
+
+3.安全管理：GeoServer提供基于角色的安全机制，可以控制用户和组的访问权限。
+
+4.插件支持：GeoServer支持多种插件，如REST API、GeoWebCache、WPS等，可以扩展其功能。
+
+5.易于部署和使用：GeoServer可以轻松部署到任何Java应用服务器中，并提供易于使用的Web界面进行配置和管理。
+
+GeoServer是一个功能强大、易于使用、高度可定制的地理数据服务器，可以帮助用户快速发布和管理空间数据服务。
+
 ##  TASK 4
 
 ###  总体设计
@@ -24,6 +48,8 @@
     <img src="README.assets/image-20230428163637297.png" width="250"/>
     <img src="README.assets/image-20230428163717817.png" width="250"/>
 </center>
+<center style="font-size:15px;color:#000000;">图1 手风琴样式设计</center> 
+
 
 ###  段文豪
 
@@ -145,7 +171,7 @@ const customLayer = {
     <img src="README.assets/image-20230428171906031.png" width="200"/>
     <img src="README.assets/image-20230428172043301.png" width="200"/>
 </center>
-
+<center style="font-size:15px;color:#000000;">图2 三维模型展示</center> 
 
 
 ####  加载GeoJSON格式
@@ -274,6 +300,8 @@ const { id, layer, source, properties } = renderFeature;
     <img src="README.assets/QQ截图20230428174043.png" width="200"/>
     <img src="README.assets/QQ截图20230428174016.png" width="230"/>
 </center>
+<center style="font-size:15px;color:#000000;">图3 geojson格式展示</center> 
+
 
 ####  自定义GeoJSON格式
 
@@ -285,10 +313,14 @@ const { id, layer, source, properties } = renderFeature;
     <img src="README.assets/QQ截图20230428174650.png" width="250"/>
     <img src="README.assets/QQ截图20230428174659.png" width="250"/>
 </center>
+<center style="font-size:15px;color:#000000;">图4 自定义geojson格式展示</center> 
+
 
 ####  加载GeoServe服务
 
 ![image-20230428175117863](README.assets/image-20230428175117863.png)
+
+<center style="font-size:15px;color:#000000;">图5 geoserver图层发布</center> 
 
 将湖北省的边界数据进行一个分布，然后调用wfs服务。
 
@@ -338,6 +370,8 @@ map.on('load',()=>{
     <img src="README.assets/image-20230428175407038.png" width="200"/>
     <img src="README.assets/QQ截图20230428175350.png" width="200"/>
 </center>
+<center style="font-size:15px;color:#000000;">图6 geoserver图层调用</center> 
+
 
 #### 图层控制
 
@@ -369,6 +403,8 @@ map.on('load',()=>{
 
 <img src="README.assets/image-20230428175611274.png" alt="image-20230428175611274" style="zoom:50%;" />
 
+<center style="font-size:15px;color:#000000;">图7 图层控制</center> 
+
 ####  样式更改
 
 1. 表盘设计
@@ -378,6 +414,8 @@ map.on('load',()=>{
     <img src="README.assets/image-20230428175736951.png" width="200"/>
     <img src="README.assets/image-20230428175932918.png" width="200"/>
 </center>
+<center style="font-size:15px;color:#000000;">图8 样式面板</center> 
+
 
 点包括：
 
@@ -406,6 +444,8 @@ map.on('load',()=>{
     <img src="README.assets/QQ截图20230428182118.png" width="250"/>
     <img src="README.assets/image-20230428182144117.png" width="250"/>
 </center>
+<center style="font-size:15px;color:#000000;">图9 样式修改</center> 
+
 
 对于修改样式，在mapbox中不能指定给某个样式更改样式的api，但可以通过属性值的变化实时渲染，然后需要给每个要素添加对应的属性。
 
@@ -467,10 +507,236 @@ var custom_point = {
     <img src="README.assets/QQ截图20230428183147.png" width="300"/>
     <img src="README.assets/QQ截图20230428183249.png" width="300"/>
 </center>
+<center style="font-size:15px;color:#000000;">图10 绘制图层样式修改</center> 
 
 ### 殷鹏成
 
+#### 数据准备
 
+GeoServer发布地图的流程可以简单概括为以下几个步骤：
+
+1. 准备数据：首先需要准备需要发布的地图数据，可以是各种矢量数据（如`Shapefile`、`PostGIS`、`Oracle`等），也可以是栅格数据（如`GeoTIFF`、`ArcGrid`等）。准备地大未来城的`shp`与`geojson`数据，武汉市边界的`shp`数据。
+
+<center>
+    <img src="README.assets/image-20230428191638962.png" width="250"/>
+    <img src="README.assets/image-20230428191644620.png" width="250"/>
+</center>
+
+<center style="font-size:15px;color:#000000;">图11 数据准备</center> 
+
+2.创建工作区（`Workspace`）：在`GeoServer`中创建一个工作区，一个工作区对应一个数据库或者一组数据集，通常情况下，一个工作区对应一个地理信息系统。
+
+![image-20230428191808172](README.assets/image-20230428191808172.png)
+
+<center style="font-size:15px;color:#000000;">图12 工作空间</center> 
+
+3.创建数据存储（`Data Store`）：在工作区中创建数据存储，用于管理发布的数据。数据存储可以是一个本地文件夹、数据库或远程`WMS`服务。
+
+![image-20230428191833161](README.assets/image-20230428191833161.png)
+
+<center style="font-size:15px;color:#000000;">图13 创建数据源</center> 
+
+4.发布图层（`Layer`）：在`GeoServer`中发布图层，即将准备好的数据发布为`WMS`或`WFS`服务，使其可以通过`Web`进行访问。
+
+![image-20230428191850386](README.assets/image-20230428191850386.png)
+
+<center style="font-size:15px;color:#000000;">图14 编辑图层</center> 
+
+5.配置样式（Style）：为发布的图层配置样式，包括颜色、线宽、填充等。
+
+配置发布参数：在GeoServer中对发布的图层进行一些设置，如投影、坐标系、分辨率等。
+
+6.部署服务：最后将发布好的地图服务部署到Web服务器中，供用户通过Web访问。
+
+![image-20230428191912646](README.assets/image-20230428191912646.png)
+
+<center style="font-size:15px;color:#000000;">图15 预览图层</center> 
+
+####  ArcGIS Maps SDK for JavaScript实现过程
+
+（1）`ArcGIS Pro`与`ArcGIS Oline`发布`3D`白模数据
+
+将地大未来城的`shp`文件添加高程字段，赋予其高程。在`ArcGIS Pro`中进行拉伸，显示出建筑物的高程值，其他的无高度的`geojson`正常显示，最后发布图层到`ArcGIS Oline`中，在`html`中运用。
+
+![image-20230428191951475](README.assets/image-20230428191951475.png)
+
+<center style="font-size:15px;color:#000000;">图16 白膜查看</center> 
+
+（2）交互绘制点、线、面
+
+运用`"esri/widgets/Sketch/SketchViewModel"`类，添加草图绘制控件，实现绘制点线面的功能，同时可以修改显示的颜色。
+
+![image-20230428192029614](README.assets/image-20230428192029614.png)
+
+<center style="font-size:15px;color:#000000;">图17 绘制点线面</center> 
+
+（3）修改要素位置
+
+点击绘画的要素，实现前后左右上下、旋转、移动或者实现单体编辑。
+
+![image-20230428192045542](README.assets/image-20230428192045542.png)
+
+<center style="font-size:15px;color:#000000;">图18 修改要素</center> 
+
+####  Openlayers实现过程
+
+（1）图层控制，加载`GeoJson`格式的数据；
+
+控制图层显示，使用`openlayers`加载地大`GeoJson`格式数据，即将`source`设为文件的`URL`。
+
+```js
+var buildLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        // 加载 GeoJSON 数据
+        url: "/geojson/build.geojson",
+        format: new ol.format.GeoJSON()
+    }),
+    style:new ol.style.Style({
+        fill: new ol.style.Fill({
+            color:[231, 229, 223, 1],
+
+        }),
+        stroke: new ol.style.Stroke({
+            color: [0, 0,0,1],
+            width: 2
+        })
+    }),
+    name: "建筑物",
+})
+map.addLayer(buildLayer)  
+```
+
+右下角图层控制，可以对每个数据进行单独显示，控制，包含服务图层、绘画层和`GeoJson`数据层和影像层。
+
+![image-20230428192127669](README.assets/image-20230428192127669.png)
+
+<center style="font-size:15px;color:#000000;">图19 总览</center> 
+
+（2）利用`geoserver`发布数据，并加载在地图上；将`geoserver`发布数据武汉边界加入地图，获取其`URL`；
+
+![image-20230428192136797](README.assets/image-20230428192136797.png)
+
+<center style="font-size:15px;color:#000000;">图20 geoserver图层查看</center> 
+
+（3）交互绘制点、线、面；点击右上角绘画，可以绘制点、线、面、圆等图像。点击清空，会删除绘画层中所以`feature`。点击结束后，结束绘制。![image-20230428192147141](README.assets/image-20230428192147141.png)
+
+<center style="font-size:15px;color:#000000;">图21 交互绘制</center> 
+
+（4）点击要素修改要素样式；用`easyUI`进行样式属性修改，运用`jQuery`获得对应`id`下`input`中的`value`值，将属性传递给ol.style，最后通过setstyle函数将feature的样式修改。
+
+```js
+function createStyleFunction() {
+    var linestyle=new ol.style.Style({
+        stroke: new ol.style.Stroke({
+        color: document.getElementById('lines-stroke-color').value,
+        width: document.getElementById('lines-stroke-width').value
+        })
+    })
+return linestyle}
+
+function work() {
+        console.log("2")
+        styleall=createlineStyleFunction()
+ }
+```
+
+其中，最重要的如何获得点击的要素信息。解决办法是用到`ol.interaction.Select`和`ol.interaction.Modify`两个类函数，可以实现点击要素，获得要素的属性信息。这样加上setstyle就可以快速实现点击要素修改属性。代码如下：
+
+```js
+function modifystyle(){
+    selectInteraction = new ol.interaction.Select({
+        condition: ol.events.condition.click,
+    });
+
+    // 创建 modify 交互对象
+    modifyInteraction = new ol.interaction.Modify({
+        features: selectInteraction.getFeatures(),
+    });
+
+    // 将 select 和 modify 交互对象添加到地图上
+    map.addInteraction(selectInteraction);
+    map.addInteraction(modifyInteraction);
+
+    // 监听选中要素事件
+    selectInteraction.on('select', function (event) {
+        // 获取选中的要素
+        var feature = event.selected[0];
+        // console.log(styleall)
+
+        // 将要素的样式设置为指定颜色
+        feature.setStyle(styleall);
+    });
+}
+```
+
+具体演示如下：
+
+点击对应样式，点击进入修改模式，滑动按钮修改大小、粗细，点击颜色进行取色。然后点击要素，实现样式修改。该功能对于发布的图层、加载图层，绘制图层中的单个要素都能运用，而不是对整个图层修改。
+
+<center class="half">
+    <img src="README.assets/image-20230428192252898.png" width="200"/>
+    <img src="README.assets/image-20230428192259448.png" width="200"/>
+    <img src="README.assets/image-20230428192302624.png" width="200"/>
+</center>
+
+<center style="font-size:15px;color:#000000;">图22 样式面板</center> 
+
+具体效果：
+
+![image-20230428192423057](README.assets/image-20230428192423057.png)
+
+<center style="font-size:15px;color:#000000;">图23 修改结果</center> 
+
+（5）修改要素位置。
+
+与修改样式选取单个要素相同，用到`ol.interaction.Select`和`ol.interaction.Modify`两个类函数，可以实现点击要素，获得要素的属性信息。对于移动，还需要用到`ol.interaction.Translate`类函数。代码如下：
+
+```js
+ // 传入选中的图形
+modify = new ol.interaction.Translate({
+    features: new ol.Collection(featureParam),
+});
+} else {
+    // 先选择在修改.每次只编辑一个图形
+    drawInteraction = new ol.interaction.Select({
+        layers: [layer],
+        feature: source.getFeatures(),
+    });
+    // 传入选中的图形
+    // 这样做之后，需要点击选中要素才可以进行编辑
+    modify = new ol.interaction.Translate({
+        features: drawInteraction.getFeatures(),
+    });
+}
+
+modify.on('translatestart', function (e) {
+    try {
+        console.log(e.target);
+    } catch (e) {
+        console.log(e);
+    }
+});
+// 平移结束事件
+modify.on('translateend', function (e) {
+    try {
+        console.log(e.target);
+        featureParam[0].setStyle(style);
+    } catch (e) {
+    }
+});
+
+// 吸附鼠标
+snap = new ol.interaction.Snap({
+    pixelTolerance: 20,
+    source: vectorSource
+});
+```
+
+最终实现点击单个要素，实现单个要素演示：
+
+![image-20230428192512648](README.assets/image-20230428192512648.png)
+
+<center style="font-size:15px;color:#000000;">图24 结果展示</center> 
 
 ###  张梓元
 
@@ -478,13 +744,19 @@ var custom_point = {
 
 ![image-20230428162443631](README.assets/image-20230428162443631.png)
 
+<center style="font-size:15px;color:#000000;">图25 三维展示</center> 
+
 2、 利用 `GeoServer `发布中国地质大学（武汉）未来城校区的 `ShapeFile `文件，创建工作 空间、存储仓库和图层。图层参考系为 `ESPG:4326`，坐标为经纬度。发布结果如下：
 
 ![image-20230428162521112](README.assets/image-20230428162521112.png)
 
+<center style="font-size:15px;color:#000000;">图26 图层发布</center> 
+
 3、利用 `Ajax `请求 `Geoserver `的服务，请求到 `GeoJson `后，将数据载入并显示。载入时需要遍历对象为其设置样式。
 
 ![image-20230428162602859](README.assets/image-20230428162602859.png)
+
+<center style="font-size:15px;color:#000000;">图26 图层调用</center> 
 
 4、选择某个要素，获取要素属性，并提供可视化的修改。例如，下图单击选择按钮， 切换选择对象模式通过色盘修改操场的颜色。
 
@@ -492,26 +764,38 @@ var custom_point = {
     <img src="README.assets/image-20230428162635774.png" width="300"/>
     <img src="README.assets/image-20230428162653290.png" width="300"/>
 </center>
+<center style="font-size:15px;color:#000000;">图27 修改操场颜色</center> 
+
 
 5、利用 `Cesium.ScreenSpaceEventHandler(viewer.scene.canvas)`创建鼠标事件对象，绑定 鼠标事件实现鼠标绘制点、线、面。
 
 ![image-20230428162843428](README.assets/image-20230428162843428.png)
 
+<center style="font-size:15px;color:#000000;">图28 绘制点线面</center> 
+
 切换到“颜色选择”模式，同样可以点击要素并修改样式。
 
 ![image-20230428162905662](README.assets/image-20230428162905662.png)
+
+<center style="font-size:15px;color:#000000;">图29 修改绘制的点线面样式</center> 
 
 6、鼠标点击获取相应的实体，并可以拖拽移动。
 
 ![image-20230428162936426](README.assets/image-20230428162936426.png)
 
+<center style="font-size:15px;color:#000000;">图30 移动绘制的点线面样式</center> 
+
 切换到“删除模式”，点击要素即可删除用户绘制的点、线、面。
 
 ![image-20230428163002279](README.assets/image-20230428163002279.png)
 
+<center style="font-size:15px;color:#000000;">图31 删除绘制的点线面样式</center> 
+
 7、利用 Cesium 的高度渲染，设置建筑物的高度属性，以实现三维白膜效果。这里建筑 物根据高度设置不同的颜色显示，用户同样可以获取建筑物信息并修改颜色。
 
 ![image-20230428163032079](README.assets/image-20230428163032079.png)
+
+<center style="font-size:15px;color:#000000;">图32 三维白膜数据</center> 
 
 
 
@@ -523,9 +807,13 @@ var custom_point = {
 
 ![image-20230428161600399](README.assets/image-20230428161600399.png)
 
+<center style="font-size:15px;color:#000000;">图33 地大矢量数据</center> 
+
 2、在`MapShaper`网站将`shp`文件转为`GeoJson`文件并保存到本地。
 
 ![image-20230428161612722](README.assets/image-20230428161612722.png)
+
+<center style="font-size:15px;color:#000000;">图34 转换格式</center> 
 
 3、新建一个`html`页面，通过加载瓦片地图的方式加载天地图，将地图初始中心点设置为未来城中心坐标，将地图初始显示级别设置到合适大小。
 
@@ -663,6 +951,8 @@ label {
 
 ![image-20230428162054075](README.assets/image-20230428162054075.png)
 
+<center style="font-size:15px;color:#000000;">图35 地大geojson格式</center> 
+
 **二、实现矢量要素的绘制和样式修改**
 
 1、添加选择要素，设置两个选项，分别为画图和修改样式。
@@ -728,5 +1018,19 @@ onChange();
 
 ![image-20230428162321617](README.assets/image-20230428162321617.png)
 
+<center style="font-size:15px;color:#000000;">图36 绘制面和修改</center> 
 
+##  总结
+
+小组成员朱柏冰是零基础，但在自己的努力和小组成员的互帮互助下完成的效果十分好，掌握了openlayers的基本方法。
+
+小组成员段文豪，学习了mapbox的基本使用方法，通过mapbox的api自行解决了单要素样式修改的方法，但方法比较笨重，需要考虑更加周全后效果会更好。整个四个实习，学到了很多新的前端知识，学会了用IIS部署自己的网站和github进行page分布，也体验了一把服务器的效果（虽然已经过期了）。
+
+小组成员殷鹏成，一开始使用ArcGIS Maps SDK for JavaScript进行作业时，是想进行三维的编辑，最后发现其可以用一个空间就完成功能，并且移动旋转缩放所有都封装好了。后面就转头写openlayer。ArcGIS Maps SDK for JavaScript和OpenLayers都是流行的WebGIS开发框架，它们都有自己的优缺点。ArcGIS Maps SDK for JavaScript注重集成度和便捷性，而OpenLayers注重开放性和自由度，支持丰富的交互和样式控制，可定制化程度高。
+
+小组成员张梓元，在 WebGIS 开发过程中，开发者应充分考虑用户需求，考虑数据来源及格式和技术栈， 设计易用美观的地图符号、用户界面和交互功能，根据用户需求设计完整正确的地图分析功 能，并进一步考虑性能和安全性，最终保证系统正常部署和运维。总之，GIS 开发是一项综 合的工作，我们要不断提高自身开发实力，学会团队配合，才能更好完成开发任务，提升开 发质量和效率。
+
+### 致谢
+
+感谢樊老师的课程教学！樊老师的教学模式非常适合我们！相较于其他课，我们确实学到了很多。
 

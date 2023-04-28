@@ -1,5 +1,9 @@
 [toc]
 
+<div style=”page-break-after: always;”></div>
+
+
+
 ## 实习任务
 
 1. 选择一种公共地图资源，加载地图服务。
@@ -30,7 +34,39 @@
 
 ###  ArcGIS API for JavaScript
 
+`ArcGIS Maps SDK for JavaScript`是一款基于`JavaScript`的`Web`开发工具，由`Esri`开发，旨在帮助开发者构建高效、可视化和互动的地图应用程序。它提供了一系列的`API`和工具，使开发者可以轻松地在Web端创建丰富的地图应用程序，支持`3D`和`2D`视图，可扩展性强，可以在各种不同的平台和设备上使用。它还提供了许多基于`ArcGIS`平台的高级功能，如地图分析、数据可视化、空间查询、地理编码等。
 
+（1）`ArcGIS Maps SDK for JavaScript`主要的数据类型与对象包括：
+
+1.`Map`（地图对象）：地图是`Web GIS`应用程序的基础，通过 `MapView `将地图显示在浏览器中。
+
+2.`Layer`（图层）：地图上的可视化元素，包括 `FeatureLayer`（要素图层）、`ImageryLayer`（影像图层）、`TileLayer`（瓦片图层）等等。
+
+3.`View`（视图）：地图在`WebGIS`应用程序中的可见区域，可通过 `MapView `对象进行控制。
+
+4.`Graphic`（图形）：在 `GraphicsLayer `中用于绘制几何图形的数据类型，可以包含几何信息、属性信息和样式信息。
+
+5.`Geometry`（几何体）：地理空间数据的几何信息，包括点、线、面等。
+
+6.`Symbol`（符号）：用于在地图上绘制图形、图层等的样式信息。
+
+7.`PopupTemplate`（弹出框模板）：用于设置弹出框内容的数据类型，包括标题、字段信息、图片等。
+
+8.`Query`（查询）：用于在图层中查询数据的数据类型，可以通过属性条件、空间条件、关联表查询等方式进行查询。
+
+（2）综合上述数据类型，它的工作机制主要涉及以下几个方面：
+
+1.地图：提供了构建地图的`API`，可以通过这些`API`设置地图的初始位置、地图缩放级别、地图样式等属性。
+
+2.图层：支持加载多种类型的图层数据，包括瓦片图层、动态图层、特征图层等。通过添加图层可以实现在地图上展示数据、标注等功能。
+
+3.工具：提供了一系列工具，例如缩放工具、漫游工具、量测工具等，用于帮助用户操作地图。
+
+4.分析：提供了`GIS`分析功能，可以进行空间查询、缓冲区分析、路径规划等操作，用于支持地理信息系统的应用。
+
+5.其他：还提供了一些其他的功能，例如标注、信息窗口、动画等。
+
+总体来说，`ArcGIS Maps SDK for JavaScript`的工作机制是将地图、图层、工具、分析等各个组件进行组合，实现`GIS`应用的构建和展示。
 
 ###  Cesium
 
@@ -76,7 +112,7 @@
     <img src="README.assets/image-20230428103337288.png" width="250"/>
     <img src="README.assets/image-20230428103427074.png" width="250"/>
 </center>
-
+<center style="font-size:15px;color:#000000;">图1 导航栏设计</center> 
 
 ###  段文豪
 
@@ -139,6 +175,8 @@ var map = new mapboxgl.Map({
 
 ![image-20230428094933370](README.assets/image-20230428094933370.png)
 
+<center style="font-size:15px;color:#000000;">图2 天地图加载</center> 
+
 2. 加载`mapbox`的矢量图层(不建议)
 
 `mapbox`自带许多样式图层，有`light`、`dark`、`img`
@@ -150,6 +188,8 @@ style: "mapbox://styles/mapbox/streets-v10",
 上述放入`map`初始化中。
 
 ![image-20230428095144425](README.assets/image-20230428095144425.png)
+
+<center style="font-size:15px;color:#000000;">图3 mapbox图层加载</center> 
 
 ####  控件设计
 
@@ -163,6 +203,8 @@ map.addControl(new mapboxgl.FullscreenControl());
 
 ![image-20230428095542302](README.assets/image-20230428095542302.png)
 
+<center style="font-size:15px;color:#000000;">图4 全屏控件</center> 
+
 2. 显示缩放和旋转控件
 
 用于缩放和旋转调整。
@@ -173,6 +215,8 @@ map.addControl(new mapboxgl.NavigationControl());
 
 ![image-20230428095811272](README.assets/image-20230428095811272.png)
 
+<center style="font-size:15px;color:#000000;">图5 缩放控件</center> 
+
 3. 帧率显示控件
 
 ```javascript
@@ -180,6 +224,8 @@ map.addControl(new mapboxgl.FrameRateControl());
 ```
 
 ![image-20230428100007690](README.assets/image-20230428100007690.png)
+
+<center style="font-size:15px;color:#000000;">图6 帧率控件</center> 
 
 4. 导航控件
 
@@ -196,6 +242,8 @@ map.addControl(directions, 'top-left');
 ```
 
 <img src="README.assets/image-20230428100216582.png" alt="image-20230428100216582" style="zoom:50%;" />
+
+<center style="font-size:15px;color:#000000;">图7 导航控件</center> 
 
 5. 鹰眼控件
 
@@ -256,6 +304,8 @@ function Minimap ( options )
 详细细节见`mapbox-mini.js`。
 
 ![image-20230428100512511](README.assets/image-20230428100512511.png)
+
+<center style="font-size:15px;color:#000000;">图8 鹰眼控件</center> 
 
 ####  升学路线
 
@@ -599,14 +649,130 @@ function flytoJunior(){
     <img src="README.assets/image-20230428102616482.png" width="250"/>
     <img src="README.assets/image-20230428102710771.png" width="250"/>
 </center>
-
+<center style="font-size:15px;color:#000000;">图9 整体效果</center> 
 
 
 
 
 ###  殷鹏成
 
+（1）加载`3D`底图，实现基本场景；各个组件进行组合需要用到require函数，是用于加载模块的方法，类似于` Node.js` 中的 `require `方法。使用 `require `函数可以加载其他 `JavaScript `文件中定义的类、函数、对象等。这里我们暂时仅需要用到`SceneView`（三维场景）。
 
+```js
+require(["esri/Map", "esri/views/SceneView","esri/widgets/CoordinateConversion","esri/widgets/BasemapToggle","esri/layers/GraphicsLayer","esri/Graphic","esri/geometry/SpatialReference","esri/geometry/Point",  "esri/PopupTemplate", "esri/widgets/Directions", "esri/layers/RouteLayer"], (Map, SceneView, CoordinateConversion,BasemapToggle,GraphicsLayer,Graphic,SpatialReference, Point, PopupTemplate,Directions, RouteLayer) => {}
+```
+
+使用`esri/Map`模块创建`3D`地图对象，指定`ground`属性为`world-elevation`，这将在地图上添加一个海拔表面；使用`esri/views/SceneView`模块创建`3D`场景视图对象，指定`container`属性为页面上的`div`元素，`map`属性为创建的`3D`地图对象。
+
+```js
+const map = new Map({
+    basemap: "hybrid",
+    ground: "world-elevation",
+    layers: [routeLayer]            
+});
+const view = new SceneView({
+    container: "viewDiv", 
+    map: map, 
+    scale:500000000,
+});
+```
+
+通过div的视口view得到底图。
+
+![image-20230428191045759](README.assets/image-20230428191045759.png)
+
+<center style="font-size:15px;color:#000000;">图10 三维地图</center> 
+
+（2）添加控件
+
+添加地图的缩放、旋转、指南针，通过加入三维场景时获得。然后加入切换图层的控件，使用`esri/widgets/BasemapToggle`模块创建图层切换控件对象`toggle`，然后加入`UI`。
+
+```js
+const toggle = new BasemapToggle({
+    // 2 - Set properties
+    view: view, // view that provides access to the map's 'topo-vector' basemap
+    nextBasemap: "gray-vector" // allows for toggling to the 'hybrid' basemap
+});
+view.ui.add(toggle, "bottom-right");
+```
+
+点击切换地图：
+
+![image-20230428191128647](README.assets/image-20230428191128647.png)
+
+<center style="font-size:15px;color:#000000;">图10 浅色矢量图层</center> 
+
+加入路由控件，可实现位置导航，使用`"esri/widgets/Directions"`和`"esri/layers/RouteLayer"`，创建路由图层与路由控件然后加入`UI`。
+
+```js
+let directionsWidget = new Directions({
+    layer: routeLayer,
+    apiKey,
+    view
+});
+
+// Add the Directions widget to the top right corner of the view
+view.ui.add(directionsWidget, {
+    position: "bottom-left"
+});
+```
+
+进行路由功能：
+
+![image-20230428191225258](README.assets/image-20230428191225258.png)
+
+<center style="font-size:15px;color:#000000;">图11 导航控件</center> 
+
+（3）添加我的小学、初中、高中、大学的点线，确定好坐标。需要用到`"esri/layers/GraphicsLayer"`,`"esri/Graphic","esri/geometry/SpatialReference"`,`"esri/geometry/Point"`，分别对应绘画层、空间参考与点对象，使用时创建点对象加入到`GraphicsLayer`，然后将`GraphicsLayer`加入`map`。最后控制`style`、`cemera`、`xyz`与高度，得到好的观察界面。
+
+![image-20230428191300355](README.assets/image-20230428191300355.png)
+
+<center style="font-size:15px;color:#000000;">图12 添加学校信息</center> 
+
+在创建点对象时，根据`"esri/PopupTemplate"`实现点击坐标，显示出具体信息`popupTemplate`。
+
+```js
+view.on("click", function(event) {
+    view.hitTest(event.screenPoint).then(function(response) {
+        var graphic = response.results[0].graphic;
+        if (graphic && graphic.layer === graphicsLayer) {
+            view.popup.open({
+                features: [graphic],
+                location: event.mapPoint
+            });
+        } });});
+```
+
+自定义弹窗内容，然后根据view对象的事件点击实现弹窗。
+
+![image-20230428191354889](README.assets/image-20230428191354889.png)
+
+<center style="font-size:15px;color:#000000;">图13 popup弹出框</center> 
+
+（3）实现动画效果。实现设置四个按钮，分别为小学、初中、高中、大学。运用场景`view`的`goto()`函数，将按钮点击事件与`goto()`绑定，实现点击按钮，达到飞跃的效果。我们创建了一个 `MapView `对象，设置了初始的中心点和缩放级别。然后，我们创建了一个按钮，并添加了一个 `click `事件监听器。在事件监听器中，我们使用 `view.goTo` 方法跳转到指定位置，并设置了目标点的经纬度坐标、空间参考、缩放级别、角度和动画时长等选项。在点击按钮后，地图将平滑地过渡到指定位置，并以动画方式调整视角角度。
+
+```js
+var button = document.getElementById("jumpButton0");
+button.addEventListener("click", function () {
+    view.goTo({
+        target: new Point({
+            x:  113.693611,
+            y:  31.337763,
+            spatialReference: new SpatialReference({
+                wkid: 4326
+            })
+        }),
+        zoom: 17,
+        heading: 0.34445102566290225,
+        tilt: 70.95536300536367,
+        duration: 3000
+    });
+});
+```
+
+![image-20230428191447231](README.assets/image-20230428191447231.png)
+
+<center style="font-size:15px;color:#000000;">图14 动画跳跃</center> 
 
 ###  张梓元
 
@@ -637,6 +803,8 @@ maximumLevel: 18
     <img src="README.assets/image-20230428093031023.png" width="300"/>
     <img src="README.assets/image-20230428093059855.png" width="300"/>
 </center>
+<center style="font-size:15px;color:#000000;">图15 图层切换</center> 
+
 
 3. 添加常用地图控件。`Cesium `没有内置的比例尺、罗盘等，需要通过第三方库 `Cesium-navigation` 加载。下载该库，并用其提供的接口添加比例尺、罗盘等地图控件。
 4. 获 得 学 校 的 坐 标 数 据 和 属 性 信 息 ， 并 以 `GeoJSON `的 形 式 保 存 。 利 用 `Cesium.GeoJsonDataSource.load `函 数 可 以 将 `Ajax `请 求 到 的 `GeoJSON `数 据 创 建 成 `GeoJsonDataSource`，并遍历实体，设置实体的样式。
@@ -654,6 +822,8 @@ entity.billboard.sizeInMeters = false;
 学校的 `GeoJson `数据显示如下图，并创建一个表格，用于陈列学校信息。
 
 ![image-20230428093358326](README.assets/image-20230428093358326.png)
+
+<center style="font-size:15px;color:#000000;">图16 学校信息</center> 
 
 5.  设置跳转
 
@@ -682,6 +852,8 @@ duration: 3
 本案例通过 `viewer.camera.flyTo` 实现跳转效果。点击表格中的学校名称，即可触发视图 的飞行动画，将视图跳转至学校所在位置。
 
 ![image-20230428093712392](README.assets/image-20230428093712392.png)
+
+<center style="font-size:15px;color:#000000;">图17 跳跃视图</center> 
 
 ###  朱柏冰
 
@@ -830,6 +1002,8 @@ ol.control.DrawControl.prototype.addInteraction = function(shapeType){
 
 ![image-20230428092536257](README.assets/image-20230428092536257.png)
 
+<center style="font-size:15px;color:#000000;">图18 绘制控件</center> 
+
 动画效果的主要实现步骤如下：
 
 （1）新建一个`html`页面，加载天地图瓦片图层；
@@ -840,9 +1014,45 @@ ol.control.DrawControl.prototype.addInteraction = function(shapeType){
 
 ![image-20230428092607228](README.assets/image-20230428092607228.png)
 
+<center style="font-size:15px;color:#000000;">图19 跳跃设置</center> 
+
 在实习一中制作的个人介绍页面中，通过`<a>`添加页面的点击跳转，查看教育经历。
 
 ![image-20230428092630725](README.assets/image-20230428092630725.png)
 
+<center style="font-size:15px;color:#000000;">图20 个人主页修改</center> 
+
 ##  总结
 
+本组成员使用四种不同的框架进行webgis的编写。在地图的表现上面来看，各有各自的优势。每个人都很认真的完成了各自的部分。
+
+`Cesium`与 `Openlayers `进行对比学习，体会两者使用思维和方法的不同，主要总结如下：
+
+ （1）在数据管理方面，两者最大的区别是 `openlayers `有图层的概念，而 `Cesium `没有图 层，用 `DataCollection `替代图层管理数据。另外，`Cesium `的每个对象可以设置对应的 ID， 用于唯一标识对象。
+
+（2）在渲染技术方面，`Openlayers `展示二维场景，有 `cavans `和 `webgl `两种接口，而 `Cesium `主要用于渲染三维场景，使用 `webgl `渲染，能够呈现更加逼真的地球表面，包括光照、阴影、 反射等效果。 
+
+（3）在地图类型方面，`Cesium `主要针对虚拟地球应用，提供了全球三维地球模型和地 形数据，而 `OpenLayers `主要针对 `Web `地图应用，提供了各种不同的地图类型（如 `Google `地图、`Bing `地图、`OpenStreetMap `等）。 
+
+（4）在功能定位方面，`Cesium `专注于提供虚拟地球的可视化效果和交互体验，包括卫 星影像、地形、建筑物、飞行轨迹等。而 `OpenLayers `则更侧重于提供各种不同类型的地图 和地图数据处理工具，如地理编码、路线规划、数据可视化等。
+
+ （5）在应用场景方面，`Cesium `适用于需要展示三维地球数据的应用场景，如地理信息 系统、航空航天、智能城市等。`OpenLayers `则适用于各种 `Web `地图应用场景，如在线地图、 位置服务、物流管理等。
+
+使用完`ArcGIS`的开发包过后，最直观的感受是它的高度封装性，`ArcGIS Maps SDK for JavaScript`几乎为用户封装了许多常用的功能，打包成了`api`，比如绘画、平移、旋转等，提供了大量封装好的类和方法，方便开发者快速构建`WebGIS`应用，提供了大量可重用的组件和样式，可以减少开发者的工作量和开发时间。
+
+整体的感觉是使用`ArcGIS Maps SDK for JavaScript`比较方便，但不利于初学者学习`WebGIS`开发的基础，适用于已了解`WebGIS`的底层原理的人进行高级开发，具有一定的门槛；而`openlayers`更加灵活，自定义性高，接触的内容更加具体，细节，适用于初学者。但对于各种地图，图层基本上都是大同小异，此次运用也算是初次适用`arcgis`的开发包，使用不同的开发资源进行`WebGIS`学习。后续实习也将回归到`openlayers`，学习原理。
+
+###  小组分工
+
+| 成员   | 分工                            |
+| ------ | ------------------------------- |
+| 段文豪 | 导航栏设计、`mapbox`使用        |
+| 殷鹏成 | `ArcGIS API for JavaScript`使用 |
+| 张梓元 | `cesium`使用                    |
+| 朱柏冰 | `openlayers`使用                |
+
+###   服务器已停
+
+试用的服务器已经到期了，不能进行访问了。
+
+但https://dwh553321494.github.io/webgis_task/可以访问，底图🗺加载不出来

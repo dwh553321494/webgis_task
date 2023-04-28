@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <title>加载天地图图层</title>
+    <!--引入第三方的jquery脚本库-->
+    <script src="./js/jquary.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" type="text/css" href="./css/cesium-navigation.css">
+    <script type="text/javascript" src="./Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="./js/CesiumNavigation.umd.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/tinycolor/1.4.2/tinycolor.js"></script>
+    <script src="./js/map4.js"></script>
+    <link rel="stylesheet" href="./css/colorPanel.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/table.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        .bubbly-button {
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            background-color: rgb(239, 239, 239);
+            border: 0px;
+        }
+
+        .attribute-panel {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 350px;
+            height: 90vh;
+            /* background-color: aliceblue; */
+            border-radius: 10px;
+            display: none;
+        }
+
+        .attribute-box {
+            width: 100%;
+            padding: 10px 10px 10px 10px;
+            background: rgba(6, 48, 109, 0.7);
+            position: relative;
+            border-radius: 5px;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .attribute-info {
+            /* height: 300px; */
+            /* position: relative; */
+            margin-bottom: 10px;
+            /* font-size: 16rem; */
+        }
+
+        .alltitle {
+            height: 20px;
+            font-size: 16px;
+            color: #fff;
+            line-height: 20px;
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 15px;
+        }
+
+        .alltitle:before {
+            position: absolute;
+            height: 20px;
+            width: 4px;
+            background: #49bcf7;
+            border-radius: 5px;
+            content: "";
+            left: 0;
+            top: 2px;
+            margin-top: -.1rem;
+        }
+
+        .school-box {
+            width: 300px;
+            height: auto;
+            padding: 10px 10px 10px 10px;
+            background: rgba(6, 48, 109, 0.7);
+            border-radius: 5px;
+            color: #fff;
+            position: absolute;
+            top: 8vh;
+            left: 1vw;
+            z-index: 10;
+
+        }
+
+        .layerTree {
+            position: absolute;
+            z-index: 10;
+            top: 2vh;
+            left: 1vw;
+
+        }
+
+        #layer-select {
+            width: 100px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: rgba(6, 48, 109, 0.7);
+            color: white;
+            padding-left: 5px;
+            font-weight: 600;
+        }
+
+        .cesium-viewer-toolbar {
+            position: absolute;
+            top: 15px;
+            left: 8%;
+            z-index: 999;
+        }
+
+        .cesium-widget-cesiumNavigationContainer #navigationDiv {
+            position: absolute;
+            right: 2px;
+            top: 16%;
+            z-index: 999;
+        }
+
+        .cesium-widget-cesiumNavigationContainer .navigation-controls {
+            color: rgb(116, 116, 116);
+        }
+    </style>
+</head>
+
+<body onload="init()">
+
+
+    <div id="mapgis-3d-viewer">
+    </div>
+
+    <div class="layerTree">
+        <form class="layerTree-form" action="">
+            <div class="layerTree-panel" style="border-bottom: none">
+                <div class="layerTree-input-select">
+                    <select id="layer-select" name="layer-select" lay-filter="layer-select">
+                        <option value="vec" selected>矢量地图</option>
+                        <option value="img">卫星影像</option>
+                        <option value="ter">地形地图</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        $('#layer-select').change(function () {
+            let selectedValue = $(this).val();
+            // [TDTLayer_vec, TDTLayer_cva, TDTLayer_img, TDTLayer_cia,TDTLayer_ter,TDTLayer_cta]
+            switch (selectedValue) {
+                case 'vec':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "vec" && TDTLayerArr[i]._imageryProvider._layer != "cva") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+
+                    break
+                case 'img':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "img" && TDTLayerArr[i]._imageryProvider._layer != "cia") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+                    break
+                case 'ter':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "ter" && TDTLayerArr[i]._imageryProvider._layer != "cta") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+                    break
+
+            }
+        });
+
+    </script>
+    <div class="attribute-panel" id="attribute-panel">
+
+        <div class="attribute-info attribute-box">
+            <div class="alltitle">对象信息</div>
+            <table class="table-info attribute-content">
+                <tr>
+                    <th class="box">
+                        <span class="twister">编号</span>
+                    </th>
+                    <td class="box">
+                        <table>
+                            <tr>
+                                <td id="pickId">Loading failed</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="box">
+                        <span class="twister">名称</span>
+                    </th>
+                    <td class="box">
+                        <table>
+                            <tr>
+                                <td id="pickName">Loading failed</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="color-panel attribute-box" id="color-panel">
+            <div class="alltitle">颜色</div>
+            <div class="attribute-content">
+                <div class="color-picker">
+                    <!-- 颜色显示区域 -->
+                    <div class="color-container">
+                        <!-- 颜色色块 -->
+                        <div class="color-show"></div>
+                    </div>
+
+                    <!-- 颜色控制区 -->
+                    <div class="color-control">
+                        <!-- 颜色选择区 -->
+                        <div class="color-move">
+                            <canvas></canvas>
+                            <div class="move"></div>
+                        </div>
+
+                        <!-- 透明度 -->
+                        <div class="color-opacity">
+                            <div class="color-opacity-show"></div>
+                            <div class="slide"></div>
+                        </div>
+
+                        <!-- 色相选择 -->
+                        <div class="hue">
+                            <div class="slide"></div>
+                        </div>
+                    </div>
+                </div>
+                <script src="./js/colorPick.js"></script>
+            </div>
+            <div class="color-submit" style="  display:flex; justify-content:flex-end;">
+                <button class="pulse" id="color-submit-button"
+                    style="width: 40px;height: 30px; padding: 0px;margin: 5px 0px 0px 0px;font-size: 14px;">确定</button>
+                <script>
+                    $('#color-submit-button').click(function () {
+                        myPick.setColor()
+                        setTimeout(function () {
+                            $('#color-submit-button').blur();
+
+                        }, 500);
+                    });
+                </script>
+            </div>
+        </div>
+
+    </div>
+
+    <div class=" tool-box">
+        <div class="tool-container">
+            <div class="tool-head">
+                <i>
+                    <svg t="1681043714373" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" p-id="22217" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        width="35" height="35">
+                        <path
+                            d="M254.4 82.624L82.624 254.4a60.704 60.704 0 0 0 0 85.92L254.4 512l128.8-128.8-42.88-42.88-85.92 85.888-42.88-42.88 85.888-85.92-42.88-42.88-85.92 85.888-42.88-42.88 171.776-171.84 171.584 171.616L512 254.4l-171.776-171.84a60.576 60.576 0 0 0-85.76 0z m644.096 644.064l-171.808 171.808-42.88-42.912 85.888-85.888-42.88-42.88-85.92 85.856-42.88-42.88 85.888-85.888-42.912-42.912L512 769.6l171.776 171.776a60.704 60.704 0 0 0 85.92 0l171.776-171.776a60.704 60.704 0 0 0 0-85.92L769.6 512l-42.912 42.88 171.808 171.808zM680.8 211.328l131.968 131.872-43.968 44L636.8 255.2l44-43.872zM240.96 650.976l131.968 131.872-44 44-131.968-131.872 44-44zM680.704 123.424a124.544 124.544 0 0 1 176.288 0.096l43.584 43.52a124.704 124.704 0 0 1 0.096 176.16L355.264 888.416l-268.352 48.384 48.384-268.288L680.704 123.424zM334.4 821.344L857.472 298.656c23.84-23.872 23.552-63.264-0.8-87.52L813.12 167.616c-24.544-24.544-63.552-24.832-87.584-0.8L202.432 689.6l-27.52 159.424 159.52-27.616z"
+                            fill="#fff" p-id="22218"></path>
+                    </svg>
+                </i>
+            </div>
+            <div class="tool-menu-display">
+                <div class="tool-menu">
+                    <i onclick="drawPoint()">
+                        <svg t="1681044696341" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="38215" width="35" height="35">
+                            <path
+                                d="M512 64c60.5 0 119.2 11.8 174.4 35.2 53.3 22.6 101.3 54.9 142.4 96 41.2 41.2 73.5 89.1 96 142.4C948.2 392.8 960 451.5 960 512s-11.8 119.2-35.2 174.4c-22.6 53.3-54.9 101.3-96 142.4-41.2 41.2-89.1 73.5-142.4 96C631.2 948.2 572.5 960 512 960s-119.2-11.8-174.4-35.2c-53.3-22.6-101.3-54.9-142.4-96-41.2-41.2-73.5-89.1-96-142.4C75.8 631.2 64 572.5 64 512s11.8-119.2 35.2-174.4c22.6-53.3 54.9-101.3 96-142.4s89.1-73.5 142.4-96C392.8 75.8 451.5 64 512 64m0-64C229.2 0 0 229.2 0 512s229.2 512 512 512 512-229.2 512-512S794.8 0 512 0z"
+                                fill="#fff" p-id="38216"></path>
+                            <path d="M512 512m-96 0a96 96 0 1 0 192 0 96 96 0 1 0-192 0Z" fill="#fff" p-id="38217">
+                            </path>
+                        </svg>
+                    </i>
+                    <i onclick="drawLine()">
+                        <svg t="1681043161644" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="7251" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="35" height="35">
+                            <path
+                                d="M162.304 893.952c-3.072 0-5.632-0.512-8.704-1.024-16.896-5.12-26.624-22.528-22.016-39.424l140.8-491.008c3.072-9.728 10.24-17.92 19.968-20.992 9.728-3.584 20.48-2.048 28.672 3.584l382.976 258.048L830.976 153.6c4.608-16.896 22.528-27.136 39.424-22.016 16.896 4.608 27.136 22.528 22.016 39.424l-139.264 491.52c-2.56 9.728-10.24 17.92-19.968 21.504s-20.48 2.048-28.672-3.584L321.536 421.888 193.024 870.4c-4.096 14.336-16.896 23.552-30.72 23.552z"
+                                fill="#fff" p-id="7252"></path>
+                        </svg>
+                    </i>
+                    <i onclick="drawpolygon()">
+                        <svg t="1681043280148" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" p-id="15956" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="35" height="35">
+                            <path
+                                d="M518.4 70.83l407.26 295.89c5.61 4.07 7.95 11.3 5.81 17.89L775.92 863.38a16.01 16.01 0 0 1-15.22 11.06H257.3c-6.93 0-13.07-4.46-15.22-11.06L86.52 384.62c-2.14-6.59 0.2-13.81 5.81-17.89L499.6 70.83a16 16 0 0 1 18.8 0z m-9.4 87.11L172.27 402.59l128.62 395.85h416.22l128.62-395.85L509 157.94z"
+                                fill="#fff" p-id="15957"></path>
+                        </svg>
+                    </i>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".tool-head").click(function () {
+                $(".tool-menu-display").fadeToggle("fast");
+            });
+        </script>
+
+    </div>
+
+    <div class="choose-box">
+        <div class="choose-container">
+            <div class="choose-head">
+                <i>
+                    <svg t="1681116234423" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" fill="#fff" p-id="11832" width="30" height="30">
+                        <path
+                            d="M1008.2 702.6l-414-137.8c-2.2-0.7-4.6-1.1-7-1.1-2.4 0-4.9 0.4-7.4 1.1-12.2 4-18.9 17-14.9 29.6l137.6 412.5c1.7 5.8 5.6 11.1 11.4 14.2 3.5 1.9 7.3 2.8 11 2.8 8.4 0 16.5-4.6 20.5-12.4l63.5-120.9 115.3 115.5 1.3 1.1c4.5 4.5 10.4 6.7 16.4 6.7s11.9-2.2 16.4-6.7l49.1-49.3c9.1-9.1 9.1-23.6 0-32.8l-116.6-116.4 120.7-63.5c5.3-3 9.3-7.3 11.2-13.4C1026.9 719.6 1020.1 706.5 1008.2 702.6zM861 752.1l-71.3 37.5-37.4 71.2-18.9 36.1-82-245.7 245.8 81.8L861 752.1z"
+                            p-id="11833"></path>
+                        <path
+                            d="M899.8 256 333.2 256c-42.6 0-77.2 34.6-77.2 77.2l0 506.9c0 42.6 34.6 77.2 77.2 77.2l178.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L333.2 853.3c-7.3 0-13.2-5.9-13.2-13.2L320 333.2c0-7.3 5.9-13.2 13.2-13.2l566.6 0c7.3 0 13.2 5.9 13.2 13.2l0 242.5c0 17.7 14.3 32 32 32s32-14.3 32-32L977 333.2C977.1 290.6 942.4 256 899.8 256z"
+                            p-id="11834"></path>
+                        <path
+                            d="M744.1 160c0-17.7-14.3-32-32-32L205.2 128c-42.6 0-77.2 34.6-77.2 77.2l0 506.9c0 17.7 14.3 32 32 32 17.7 0 32-14.3 32-32L192 205.2c0-7.3 5.9-13.2 13.2-13.2l506.9 0C729.8 192 744.1 177.6 744.1 160z"
+                            p-id="11835"></path>
+                        <path
+                            d="M616.1 32c0-17.7-14.3-32-32-32L77.2 0c-42.6 0-77.2 34.6-77.2 77.2l0 506.9c0 17.7 14.3 32 32 32 17.7 0 32-14.3 32-32L64 77.2c0-7.3 5.9-13.2 13.2-13.2l506.9 0C601.8 64 616.1 49.6 616.1 32z"
+                            p-id="11836"></path>
+                    </svg>
+                </i>
+            </div>
+            <div class="choose-menu-display">
+                <div class="choose-menu">
+                    <i onclick="chooseEntity()">
+                        <svg t="1681128325617" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" fill="#fff" p-id="16379" width="30" height="30">
+                            <path
+                                d="M465.92 1008.64a666.88 666.88 0 0 1-67.84-5.12h-6.4c-172.8-26.24-290.56-192-295.68-200.96A492.16 492.16 0 0 1 170.24 147.2a485.12 485.12 0 0 1 646.4-19.2 620.8 620.8 0 0 1 192 290.56c21.12 115.84 3.84 200.96-51.84 256-85.76 81.92-227.2 55.68-246.4 51.84a64 64 0 0 0-59.52 22.4 68.48 68.48 0 0 0-13.44 59.52 145.28 145.28 0 0 1 5.76 99.84 178.56 178.56 0 0 1-179.84 97.92z m-64-64h5.76c98.56 15.36 158.72-3.84 183.04-58.88a99.84 99.84 0 0 0-8.32-55.04 128 128 0 0 1 23.68-116.48 124.16 124.16 0 0 1 115.84-44.8h3.2s128 26.88 192-35.84c39.68-38.4 51.84-105.6 34.56-199.04a554.88 554.88 0 0 0-174.08-256A422.4 422.4 0 0 0 211.2 192a428.8 428.8 0 0 0-64 576s107.52 152.32 256 174.08z m0 0"
+                                p-id="16380"></path>
+                            <path
+                                d="M223.36 622.72a93.44 93.44 0 1 1 92.8-92.8 92.8 92.8 0 0 1-92.8 92.8z m0-121.6a28.8 28.8 0 1 0 0 56.96 28.8 28.8 0 1 0 0-56.96z"
+                                p-id="16381"></path>
+                            <path
+                                d="M294.4 439.68a93.44 93.44 0 1 1 93.44-92.8A93.44 93.44 0 0 1 294.4 439.68zM294.4 320a28.8 28.8 0 1 0 28.8 28.8A28.8 28.8 0 0 0 294.4 320zM477.44 338.56a93.44 93.44 0 1 1 93.44-93.44 93.44 93.44 0 0 1-93.44 93.44z m0-122.24a28.8 28.8 0 1 0 0 57.6 28.8 28.8 0 1 0 0-57.6zM680.32 389.12a93.44 93.44 0 1 1 93.44-93.44 92.8 92.8 0 0 1-93.44 93.44z m0-122.24a28.8 28.8 0 0 0-28.16 28.8 28.8 28.8 0 1 0 56.96 0 28.8 28.8 0 0 0-28.8-28.8z"
+                                p-id="16382"></path>
+                            <path
+                                d="M782.08 551.68a93.44 93.44 0 1 1 93.44-93.44 93.44 93.44 0 0 1-93.44 93.44z m0-121.6a28.8 28.8 0 1 0 0 56.96 28.8 28.8 0 1 0 0-56.96z"
+                                p-id="16383"></path>
+                        </svg>
+                    </i>
+                    <i onclick="setPosition()">
+                        <svg t="1681128406115" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" fill="#fff" p-id="23247" width="30" height="30">
+                            <path
+                                d="M532.202667 39.168l2.432 2.197333 128 128a32 32 0 0 1-42.837334 47.466667l-2.432-2.197333L544 141.226667V480h338.752l-73.386667-73.386667-2.197333-2.410666a32 32 0 0 1 47.466667-42.837334l128 128 2.197333 2.432a32 32 0 0 1-2.197333 42.837334l-128 128-2.432 2.197333a32 32 0 0 1-42.837334-2.197333l-2.197333-2.432a32 32 0 0 1 2.197333-42.837334l73.386667-73.365333H544v338.752l73.386667-73.386667 2.410666-2.197333a32 32 0 0 1 42.837334 47.466667l-128 128-2.432 2.197333a32 32 0 0 1-42.837334-2.197333l-128-128-2.197333-2.432a32 32 0 0 1 2.197333-42.837334l2.432-2.197333a32 32 0 0 1 42.837334 2.197333l73.365333 73.386667V544H141.226667l73.386666 73.386667a32 32 0 0 1 2.218667 42.816l-2.197333 2.432a32 32 0 0 1-42.837334 2.197333l-2.432-2.197333-128-128a32 32 0 0 1-2.197333-42.837334l2.197333-2.432 128-128a32 32 0 0 1 47.466667 42.837334l-2.197333 2.432L141.226667 480H480V141.226667l-73.386667 73.386666a32 32 0 0 1-42.816 2.218667l-2.432-2.197333a32 32 0 0 1-2.197333-42.837334l2.197333-2.432 128-128a32 32 0 0 1 42.837334-2.197333z"
+                                p-id="23248"></path>
+                        </svg>
+                    </i>
+                    <i onclick="deleteEntity()">
+                        <svg t="1681298437297" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" fill="#fff" p-id="7967" width="30" height="30">
+                            <path
+                                d="M687.603949 656.994302 541.10027 510.457878 687.603949 363.943966c8.829086-8.840342 8.829086-23.122627 0-31.961946-8.850575-8.840342-23.13286-8.840342-31.962969 0L509.138324 478.495932 362.623389 331.980997c-8.840342-8.818853-23.122627-8.818853-31.962969 0-8.840342 8.840342-8.840342 23.144116 0 31.984459l146.493445 146.514935L330.638931 656.994302c-8.819876 8.830109-8.819876 23.133883 0 31.962969 8.840342 8.829086 23.144116 8.829086 31.984459 0l146.514935-146.514935 146.502655 146.514935c8.830109 8.829086 23.112394 8.829086 31.962969 0C696.433034 680.129208 696.45657 665.824411 687.603949 656.994302z"
+                                p-id="7968"></path>
+                            <path
+                                d="M938.362063 510.457878c0-237.061161-192.174857-429.234995-429.247274-429.234995-237.062184 0-429.246251 192.173834-429.246251 429.234995 0 237.083673 192.185091 429.257507 429.246251 429.257507 97.345072 0 186.435133-33.110095 258.440074-87.677898 2.958378-3.354398 4.900613-7.636934 4.900613-12.449543 0-10.506285-8.521071-19.026332-19.027355-19.026332-5.431709 0-10.287297 2.162246-13.752212 5.826705l-0.2415 0c-64.456011 47.414893-143.745868 75.800383-229.876528 75.800383-214.679407 0-388.730489-174.073594-388.730489-388.719232 0-214.688617 174.051081-388.718209 388.730489-388.718209 214.688617 0 388.697743 174.029592 388.697743 388.718209 0 65.548902-15.386432 127.277802-44.081984 181.490517l0 0.309038c-0.508583 1.811252-1.104147 3.576455-1.104147 5.519714 0 10.507308 8.520047 19.028379 19.028379 19.028379 8.18952 0 15.054881-5.254677 17.703197-12.494569l0 0.132006C920.349827 648.38625 938.362063 581.536726 938.362063 510.457878z"
+                                p-id="7969"></path>
+                        </svg>
+                    </i>
+
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".choose-head").click(function () {
+                $(".choose-menu-display").fadeToggle("fast");
+            });
+        </script>
+    </div>
+
+    <div class="build3-box">
+        <div class="build3-head">
+            <i onclick="build3Show()">
+                <svg t="1681312455797" class="icon" viewBox="0 0 1024 1024" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" fill="#fff" p-id="3548" width="40" height="40">
+                    <path
+                        d="M907.8 226.4l0.1-0.2L526 98.2l-13.4-4.5c-0.4-0.1-0.8-0.1-1.2 0l-13.3 4.5-381.8 128 0.1 0.2c-7.7 3.2-13.4 10.7-13.4 20v509.4c0 0.7 0.4 1.4 1.1 1.7l382 162.1 13.2 5.6 12.1 5.1c0.5 0.2 1 0.2 1.4 0l12.1-5.1 13.2-5.6 382-162.1c0.7-0.3 1.1-0.9 1.1-1.7V246.3c-0.1-9.2-5.8-16.7-13.4-19.9zM483.5 862L156 723c-0.7-0.3-1.1-0.9-1.1-1.7V294.9c0-1.3 1.3-2.2 2.5-1.7l327.5 139c0.7 0.3 1.1 0.9 1.1 1.7v426.4c0 1.3-1.3 2.2-2.5 1.7z m27.8-475L201.9 255.6c-1.5-0.7-1.5-2.9 0.1-3.4l310.1-103.9 310 103.9c1.6 0.5 1.7 2.7 0.1 3.4L512.7 387c-0.4 0.2-1 0.2-1.4 0zM868 723L540.5 862c-1.2 0.5-2.5-0.4-2.5-1.7V433.9c0-0.7 0.4-1.4 1.1-1.7l327.5-139c1.2-0.5 2.5 0.4 2.5 1.7v426.4c0 0.7-0.4 1.4-1.1 1.7z"
+                        p-id="3549"></path>
+                </svg>
+            </i>
+        </div>
+    </div>
+
+</body>
+
+</html>

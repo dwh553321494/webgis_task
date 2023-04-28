@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://openlayers.org/en/v5.3.0/css/ol.css" />
+    <script type="text/javascript" src="https://openlayers.org/en/v5.3.0/build/ol.js"></script>
+    
+    <style>
+        body,
+        html,
+        div,
+        ul,
+        li,
+        iframe,
+        p,
+        img {
+            border: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+            font-family: "微软雅黑";
+        }
+
+        #map {
+            width: 99%;
+            height: 95%;
+            position: absolute;
+        }
+
+        /*图层控件的样式设置*/
+        .layerControl {
+            position: absolute;
+            bottom: 5px;
+            min-width: 150px;
+            max-height: 270px;
+            right: 0px;
+            top: 30px;
+            z-index: 2001;
+            color: #FFFFFF;
+            background-color: #7B98BC;
+            border-width: 10px;
+            border-radius: 10px;
+            border-color: #000#000#000#000;
+        }
+
+        .layerControl.title {
+            font-weight: bold;
+            font-size: 15px;
+            margin: 10px;
+
+        }
+
+        .layerTree li {
+            list-style: none;
+            margin: 5px 10px;
+        }
+
+        label {
+            display: block;
+            left: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <label>Geometry type &nbsp;</label>
+        <select id="mode">
+            <option value="modify">select a feature to modify</option>
+            <option value="draw">draw new features</option>
+          </select>
+    </form>
+    <div id="map">
+        <div class="layerControl" id="layerControl">
+            <div class="title">
+                <label>图层列表</label>
+            </div>
+            <ul id="layerTree" class="layerTree"></ul>
+        </div>
+        
+  
+        
+        <script>
+        var vectorSource = new ol.source.Vector();
+        // 矢量地图
+        let vectorLayer = new ol.layer.Vector({
+            source: vectorSource
+        });
+
+            //Map中的图层数组
+            var layer = new Array();
+            //图层名称数组
+            var layerName = new Array();
+            //图层可见属性数组
+            var layerVisibility = new Array();
+            function loadLayersControl(map, id) {
+                //图层列表容器
+                var treeContent = document.getElementById(id);
+                //获取地图中所有数组
+                var layers = map.getLayers();
+                for (var i = 0; i < layers.getLength()-1; i++) {
+                    //获取每个图层的名称、是否可见属性
+                    layer[i] = layers.item(i);
+                    layerName[i] = layer[i].get('name');
+                    layerVisibility[i] = layer[i].getVisible();
+                    //新增li元素，用来保存图层
+                    var elementLi = document.createElement('li');
+                    //添加子节点
+                    treeContent.appendChild(elementLi);
+                    //创建复选框元素
+                    var elementInput = document.createElement('input');
+                    elementInput.type = "checkbox";
+                    elementInput.name = "layers";
+                    elementLi.appendChild(elementInput);
+                    //创建lable元素
+                    var elementLable = document.createElement('lable');
+                    elementLi.appendChild(elementLable);
+                    //创建图层名称
+                    setInnerText(elementLable, layerName[i]);
+                    elementLi.appendChild(elementLable);
+                    //设置图层默认显示状态
+                    if (layerVisibility[i]) {
+                        elementInput.checked = true;
+                    }
+                    //为checkbox添加变更事件
+                    addChangeEvent(elementInput, layer[i]);
+                }
+            }
+            /*
+             为checkbox绑定变更事件
+             * */
+            function addChangeEvent(element, layer) {
+                element.onclick = function () {
+                    if (element.checked) {
+                        //显示图层
+                        layer.setVisible(true);
+                    } else {
+                        //不显示图层
+                        layer.setVisible(false);
+                    }
+                };
+            }
+            /*
+             动态设置元素文本内容（兼容）
+             * */
+            function setInnerText(element, text) {
+                if (typeof element.textContent == "string") {
+                    element.textContent = text;
+                } else {
+                    element.innerText = text;
+                }
+            }
+
+            var GaoDeMap1 = new ol.layer.Tile({
+                name: "天地图矢量图层",
+                title: "天地图矢量图层",
+                source: new ol.source.XYZ({
+                    url: "http://t0.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=52d9247f9895d65017a9d20dc0f23b39",
+                    wrapX: false
+                })
+            });
+
+            var GaoDeMap2 = new ol.layer.Tile({
+                name: "天地图矢量图层注记",
+                title: "天地图矢量图层注记",
+                source: new ol.source.XYZ({
+                    url: "http://t0.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=52d9247f9895d65017a9d20dc0f23b39",
+                    wrapX: false
+                })
+            });
+
+            var daolu = new ol.layer.Vector({
+                name: "道路",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './道路.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'black',
+                        width: 1
+                    })
+                })
+            })
+
+            var caochang = new ol.layer.Vector({
+                name: "操场",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './操场.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'Gray',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'LightCoral'
+                    })
+                })
+            })
+
+            var jianzhu = new ol.layer.Vector({
+                name: "建筑",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './建筑.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'Gray',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'PeachPuff'
+                    })
+                })
+            })
+
+            var lvhua = new ol.layer.Vector({
+                name: "绿化",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './绿化.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'Gray',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'PaleGreen'
+                    })
+                })
+            })
+
+            var renxingdao = new ol.layer.Vector({
+                name: "人行道",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './人行道.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'olive',
+                        width: 1
+                    })
+                })
+            })
+
+            var qiuchang = new ol.layer.Vector({
+                name: "球场",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './球场.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'Gray',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'MediumSeaGreen'
+                    })
+                })
+            })
+
+            var shui = new ol.layer.Vector({
+                name: "水",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './水.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                            // 自定义矢量地图样式
+                    stroke: new ol.style.Stroke({
+                        color: 'Gray',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'PaleTurquoise '
+                    })
+                })
+            })
+
+            var point = new ol.layer.Vector({
+                name: "点",
+                source: new ol.source.Vector({
+                    // 加载 GeoJSON 数据
+                    url: './点.json',
+                    format: new ol.format.GeoJSON()
+                }),
+                style: new ol.style.Style({                           
+                    image:new ol.style.Circle({    
+                        radius:3,
+                        stroke: new ol.style.Stroke({
+                        color: 'orange',
+                        width: 1
+                    }),
+                    fill: new ol.style.Fill({
+                        color: 'red'
+                    })         
+                })
+            })
+        })
+
+    var source = new ol.source.Vector({
+        url: 'https://openlayers.org/data/vector/us-states.json',
+        format: new ol.format.GeoJSON()
+  });
+
+            //实例化map对象加载地图
+            var map = new ol.Map({
+                //地图容器div的id 
+                target: 'map',
+                //地图容器中加载的图层
+                layers: [GaoDeMap1, GaoDeMap2, daolu, caochang, jianzhu, lvhua, renxingdao, qiuchang, shui, point,
+                new ol.layer.Vector({
+        source: source,
+      })
+    ],
+                //地图视图设置
+                view: new ol.View({
+                    //地图初始中心点
+                    center: [114.61175, 30.4600],
+                    //地图初始显示级别
+                    zoom: 16.5,
+                    //参考系设置
+                    projection: "EPSG:4326"
+                }),
+                controls: ol.control.defaults().extend([
+                    new ol.control.MousePosition({
+                        target: document.getElementById('mouse-position')
+                    })
+                ])
+            });
+            loadLayersControl(map, "layerTree");
+           
+            
+
+
+  var select = new ol.interaction.Select();
+
+  var modify = new ol.interaction.Modify({
+    features: select.getFeatures(),
+  });
+
+  var draw = new ol.interaction.Draw({
+    type: 'Polygon',
+    source: source,
+  });
+
+  var snap = new ol.interaction.Snap({
+    source: source
+  });
+
+  function removeInteractions() {
+    map.removeInteraction(modify);
+    map.removeInteraction(select);
+    map.removeInteraction(draw);
+    map.removeInteraction(select);
+  }
+
+  var mode = document.getElementById('mode');
+  function onChange() {
+    removeInteractions();
+    switch (mode.value) {
+      case 'draw': {
+        map.addInteraction(draw);
+        map.addInteraction(snap);
+        break;
+      }
+      case 'modify': {
+        map.addInteraction(select);
+        map.addInteraction(modify);
+        map.addInteraction(snap);
+        break;
+      }
+      default: {
+        // pass
+      }
+    }
+  }
+  mode.addEventListener('change', onChange);
+  onChange();
+
+
+</script>
+       
+        
+</body>
+
+</html>

@@ -1,0 +1,121 @@
+*{
+    margin:0;
+    padding: 0;
+    user-select: none;
+}
+:root{
+    --color: #ccc;
+    --bg: linear-gradient(45deg, rgba(0,0,0,0.4) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.4)),
+    linear-gradient(45deg, rgba(0,0,0,0.4) 25%, transparent 25%, transparent 75%, rgba(0,0,0,0.4) 75%, rgba(0,0,0,0.4));
+}
+/* body{
+    height: 100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(#fff, #125);
+} */
+
+/* 整体容器 */
+.color-picker{
+    width: 300px;
+    height: 230px;
+    /* border:solid 1px hsl(0, 35%, 29%); */
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    border: rgba(91, 192, 222, 0.3) solid;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+/* 上半部分  颜色显示区域 */
+.color-picker .color-container{
+    width: 100%;
+    height: 20px;
+    background: var(--bg);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* 上半部分 颜色显示 */
+.color-picker .color-container .color-show{
+    width: 100%;
+    height: 100%;
+    background: var(--color);
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 下半部分容器 */
+.color-control{
+    height: 200px;
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}
+
+/* 下半部分  左侧颜色选择区域 */
+.color-control .color-move{
+    width: 220px;
+    height: 100%;
+    position:relative;
+}
+
+/* 小圆球 */
+.color-control .color-move .move{
+    width: 5px;
+    height: 5px;
+    border:solid 2px #ddd;
+    position:absolute;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+}
+
+/* 中间的透明度选择 */
+.color-control .color-opacity{
+    position:relative;
+    width: 25px;
+    height: 100%;
+    background: var(--bg);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+/* 中间的透明度显示 */
+.color-control .color-opacity .color-opacity-show{
+    width: 100%;
+    height: 100%;
+    /* background: var(--color); */
+    background:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* 右侧的色相选择 */
+.color-control .hue{
+    position:relative;
+    width: 25px;
+    height: 100%;
+    /* background: var(--color); */
+    background:linear-gradient(to bottom, 
+        hsl(0, 100%, 50%) ,
+        hsl(60, 100%, 50%),
+        hsl(120, 100%, 50%),
+        hsl(180, 100%, 50%),
+        hsl(240, 100%, 50%),
+        hsl(300, 100%, 50%),
+        hsl(360, 100%, 50%)
+    );
+}
+
+.color-picker .slide{
+    position:absolute;
+    left: -2px;
+    top: 0;
+    width: 27px;
+    height: 4px;
+    border:solid 1px #ddd;
+}

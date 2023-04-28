@@ -1,0 +1,45 @@
+{
+   "type": "FeatureCollection",
+   "features": [
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 87.5813,43.7784 ]
+    },
+    "properties": {
+    "school":"primaryschool"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 117.2417,31.8177 ]
+    },
+    "properties": {
+    "school":"juniorschool"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 117.2757,31.7384 ]
+    },
+    "properties": {
+    "school":"seniorschool"
+    }
+  },
+  {
+    "type": "Feature",
+    "geometry": {
+       "type": "Point",
+       "coordinates":  [ 114.6009,30.4891 ]
+    },
+    "properties": {
+    "school":"university"
+    }
+  }
+]
+}

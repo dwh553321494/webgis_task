@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Fly to</title>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+    </script>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css" />
+    <link rel="stylesheet" href="./assert/button.css" />
+    <script src="https://js.arcgis.com/4.26/"></script>
+    <style>
+      html,
+      body,
+      /* body {
+        margin: 0;
+      } */
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+   
+    <script>
+      require(["esri/Map", "esri/views/SceneView","esri/widgets/CoordinateConversion","esri/widgets/BasemapToggle","esri/layers/GraphicsLayer", "esri/Graphic", 
+      "esri/geometry/SpatialReference","esri/geometry/Point", 
+  "esri/PopupTemplate", "esri/widgets/Directions",
+        "esri/layers/RouteLayer"],
+       (Map, SceneView, CoordinateConversion,BasemapToggle,GraphicsLayer,
+        Graphic,SpatialReference, Point, PopupTemplate,Directions, RouteLayer) => {
+        
+        const apiKey = "AAPK8571512bd2dd47ca9c0a6c060ab108b7TTFhlWjTzqk9zzAD3cZgMVr-WMNBNTLupuVNnwMkIwc1DKeAJ-9ZeM0u-fsMsPLd";
+
+// create a new RouteLayer, required for Directions widget
+        const routeLayer = new RouteLayer();
+        const map = new Map({
+                  basemap: "hybrid",
+                  ground: "world-elevation",
+                  layers: [routeLayer]
+                
+                });
+        const view = new SceneView({
+          container: "viewDiv", // Reference to the scene div created in step 5
+          map: map, // Reference to the map object created before the scene
+          scale: 50000000, // Sets the initial scale to 1:50,000,000
+          // center: [113.693862, 31.335579], // Sets the center point of view with lon/lat abluyizhong 31.249013 113.698190  
+          // xiaoxue 113.693611 31.337763 chuzhong 113.698400 31.336866  cug 114.611644 30.460725
+          // camera: {
+          //         position: {
+          //           // latitude: 31.32,
+          //           // longitude: 113.695,
+          //           // z: 1500000,// 以米为单位的高度
+          //           x: 113.695,
+          //           y: 31.31,
+          //           z: 500.7049653716385
+          //         },
+          //         // heading: 0,
+          //         // tilt: 45
+          //         heading: 0.34445102566290225,
+          //         tilt: 82.95536300536367
+          //       }
+         
+        });
+         // new RouteLayer must be added to Directions widget
+         let directionsWidget = new Directions({
+          layer: routeLayer,
+          apiKey,
+          view
+        });
+
+        // Add the Directions widget to the top right corner of the view
+        view.ui.add(directionsWidget, {
+          position: "bottom-left"
+        });
+       
+   
+        const graphicsLayer = new GraphicsLayer();
+        map.add(graphicsLayer);
+
+        /*************************
+         * Add a 3D point graphic
+         *************************/
+
+        // London
+        const point = {
+          type: "point", // autocasts as new Point()
+          x: 113.693611,
+          y: 31.337763,
+          z: 200
+        };
+        const point1 = {
+          type: "point", // autocasts as new Point()
+          x:  113.698400 ,
+          y:  31.336866 ,
+          z: 200
+        };
+        const point2 = {
+          type: "point", // autocasts as new Point()
+          x:  113.698190  ,
+          y:  31.249013 ,
+          z: 200
+        };
+        const point3 = {
+          type: "point", // autocasts as new Point()
+          x:  114.611644 ,
+          y:  30.460725,
+          z: 200
+        };
+
+        const markerSymbol = {
+          type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
+          color: [226, 119, 40],
+          outline: {
+            // autocasts as new SimpleLineSymbol()
+            color: [255, 255, 255],
+            width: 2
+          }
+        };
+
+        const pointGraphic = new Graphic({
+          geometry: point,
+          symbol: markerSymbol,
+          attributes: {
+              name: "我的小学",
+              address: "湖北省孝感市安陆市洑水小学",
+              time: "2008-2014"
+            },
+            popupTemplate: {
+              title: "{name}",
+              content: [{
+                type: "fields",
+                fieldInfos: [{
+                  fieldName: "address"
+                }, {
+                  fieldName: "time",
+                  format: {
+                    places: 0,
+                    digitSeparator: true
+                  }
+                }
+              ]
+              },
+                  {
+                      type: "media",
+                      mediaInfos: [
+                        {
+                          type: "image",
+                          value: {
+                            sourceURL: "./img/default.jpg"
+                          }
+                        }
+                      ]
+                }
+            ]
+            }
+        });
+        const pointGraphic1 = new Graphic({
+          geometry: point1,
+          symbol: markerSymbol,
+          attributes: {
+              name: "我的初中",
+              address: "湖北省孝感市安陆市洑水初中",
+              time: "2014-2017"
+            },
+            popupTemplate: {
+              title: "{name}",
+              content: [{
+                type: "fields",
+                fieldInfos: [{
+                  fieldName: "address"
+                }, {
+                  fieldName: "time",
+                  format: {
+                    places: 0,
+                    digitSeparator: true
+                  }
+                }]
+              },
+              {
+                      type: "media",
+                      mediaInfos: [
+                        {
+                          type: "image",
+                          value: {
+                            sourceURL: "./img/初中.jpg"
+                          }
+                        }
+                      ]
+                }]
+            }
+        });
+        const pointGraphic2 = new Graphic({
+          geometry: point2,
+          symbol: markerSymbol,
+          attributes: {
+              name: "我的高中",
+              address: "湖北省孝感市安陆市第一高级中学",
+              time: "2017-2020"
+            },
+            popupTemplate: {
+              title: "{name}",
+              content: [{
+                type: "fields",
+                fieldInfos: [{
+                  fieldName: "address"
+                }, {
+                  fieldName: "time",
+                  format: {
+                    places: 0,
+                    digitSeparator: true
+                  }
+                }]
+              },
+              {
+                      type: "media",
+                      mediaInfos: [
+                        {
+                          type: "image",
+                          value: {
+                            sourceURL: "./img/安陆.jpg"
+                          }
+                        }
+                      ]
+                }]
+            }
+        });
+        const pointGraphic3 = new Graphic({
+          geometry: point3,
+          symbol: markerSymbol,
+          attributes: {
+              name: "我的大学",
+              address: "中国地质大学（武汉）",
+              time: "2020-2024"
+            },
+            popupTemplate: {
+              title: "{name}",
+              content: [{
+                type: "fields",
+                fieldInfos: [{
+                  fieldName: "address"
+                }, {
+                  fieldName: "time",
+                  format: {
+                    places: 0,
+                    digitSeparator: true
+                  }
+                }]
+              },
+              {
+                      type: "media",
+                      mediaInfos: [
+                        {
+                          type: "image",
+                          value: {
+                            sourceURL: "./img/地大.jpg"
+                          }
+                        }
+                      ]
+                }]
+            }
+        });
+        graphicsLayer.add(pointGraphic);
+        graphicsLayer.add(pointGraphic1);
+        graphicsLayer.add(pointGraphic2);
+        graphicsLayer.add(pointGraphic3);
+        view.on("click", function(event) {
+        view.hitTest(event.screenPoint).then(function(response) {
+          var graphic = response.results[0].graphic;
+          if (graphic && graphic.layer === graphicsLayer) {
+            view.popup.open({
+              features: [graphic],
+              location: event.mapPoint
+            });
+          } });});
+        /****************************
+         * Add a 3D polyline graphic
+         ****************************/
+
+        const polyline = {
+          type: "polyline", // autocasts as new Polyline()
+          paths: [[113.693611, 31.337763, 0], [113.693611, 31.337763, 200]]
+        };
+        const polyline1 = {
+          type: "polyline", // autocasts as new Polyline()
+          paths: [[113.698400, 31.336866, 0], [113.698400, 31.336866, 200]]
+        };
+        const polyline2 = {
+          type: "polyline", // autocasts as new Polyline()
+          paths: [[113.698190, 31.249013, 0], [113.698190, 31.249013, 200]]
+        };
+        const polyline3 = {
+          type: "polyline", // autocasts as new Polyline()
+          paths: [[114.611644, 30.460725, 0], [114.611644, 30.460725, 200]]
+        };
+
+        const lineSymbol = {
+          type: "simple-line", // autocasts as SimpleLineSymbol()
+          color: [226, 119, 40],
+          width: 4
+        };
+
+        const polylineGraphic = new Graphic({
+          geometry: polyline,
+          symbol: lineSymbol
+        });
+        const polylineGraphic1 = new Graphic({
+          geometry: polyline1,
+          symbol: lineSymbol
+        });
+        const polylineGraphic2 = new Graphic({
+          geometry: polyline2,
+          symbol: lineSymbol
+        });
+        const polylineGraphic3 = new Graphic({
+          geometry: polyline3,
+          symbol: lineSymbol
+        });
+
+        graphicsLayer.add(polylineGraphic);
+        graphicsLayer.add(polylineGraphic1);
+        graphicsLayer.add(polylineGraphic2);
+        graphicsLayer.add(polylineGraphic3);
+
+
+        const ccWidget = new CoordinateConversion({
+          view: view
+        });
+        const toggle = new BasemapToggle({
+          // 2 - Set properties
+          view: view, // view that provides access to the map's 'topo-vector' basemap
+          nextBasemap: "gray-vector" // allows for toggling to the 'hybrid' basemap
+        });
+        view.ui.add(toggle, "bottom-right");
+        // view.ui.add(ccWidget, "bottom-left");
+   
+
+        var button = document.getElementById("jumpButton0");
+        button.addEventListener("click", function () {
+          view.goTo({
+                target: new Point({
+                  x:  113.693611,
+                  y:  31.337763,
+                  spatialReference: new SpatialReference({
+                    wkid: 4326
+                  })
+                }),
+                zoom: 17,
+                heading: 0.34445102566290225,
+                tilt: 70.95536300536367,
+                duration: 3000
+              });
+            });
+
+        var button = document.getElementById("jumpButton1");
+        button.addEventListener("click", function () {
+          view.goTo({
+                target: new Point({
+                  x:  113.698400 ,
+                  y:  31.336866 ,
+                  spatialReference: new SpatialReference({
+                    wkid: 4326
+                  })
+                }),
+                zoom: 17,
+                heading: 0.34445102566290225,
+                tilt: 70.95536300536367,
+                duration: 3000
+              });
+            });
+
+        var button = document.getElementById("jumpButton2");
+        button.addEventListener("click", function () {
+          view.goTo({
+                target: new Point({
+                  x:  113.698190  ,
+                  y:  31.249013 ,
+                  spatialReference: new SpatialReference({
+                    wkid: 4326
+                  })
+                }),
+                zoom: 17,
+                heading: 0.34445102566290225,
+                tilt: 70.95536300536367,
+                duration: 3000
+              });
+            });
+
+        var button = document.getElementById("jumpButton3");
+        button.addEventListener("click", function () {
+          view.goTo({
+                target: new Point({
+                  x:  114.611644 ,
+                  y:  30.460725,
+                  spatialReference: new SpatialReference({
+                    wkid: 4326
+                  })
+                }),
+                zoom: 17,
+                heading: 0.34445102566290225,
+                tilt: 70.95536300536367,
+                duration: 3000
+              });
+            });
+
+
+
+          });
+          
+
+    </script>
+  </head>
+
+  <body>
+    <div id="viewDiv"></div>
+    <button class="but0" id="jumpButton0">    小学    </button>
+    <button class="but1" id="jumpButton1">    初中    </button>
+    <button class="but2" id="jumpButton2">    高中    </button>
+    <button class="but3" id="jumpButton3">    大学    </button>
+  </body>
+</html>

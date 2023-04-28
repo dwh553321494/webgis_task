@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset='utf-8' />
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <title>加载天地图图层</title>
+    <!--引入第三方的jquery脚本库-->
+    <script src="./js/jquary.js"></script>
+    <link rel="stylesheet" type="text/css" href="./Cesium/Widgets/widgets.css">
+    <link rel="stylesheet" type="text/css" href="./css/cesium-navigation.css">
+    <script type="text/javascript" src="./Cesium/Cesium.js"></script>
+    <script type="text/javascript" src="./js/CesiumNavigation.umd.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/tinycolor/1.4.2/tinycolor.js"></script>
+    <script src="./js/map3.js"></script>
+    <link rel="stylesheet" href="./css/colorPanel.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/menu.css">
+    <link rel="stylesheet" href="./css/table.css" />
+
+    <!-- <script>
+        'use strict';
+        //定义三维视图的主要类
+        let viewer, options, TDTLayerArr;
+        let schoolGeo = {
+            "type": "FeatureCollection",
+            "features": [
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [87.5813, 43.7784]
+                    },
+                    "properties": {
+                        "school": "primaryschool"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [117.2417, 31.8177]
+                    },
+                    "properties": {
+                        "school": "juniorschool"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [117.2757, 31.7384]
+                    },
+                    "properties": {
+                        "school": "seniorschool"
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "geometry": {
+                        "type": "Point",
+                        "coordinates": [114.6009, 30.4891]
+                    },
+                    "properties": {
+                        "school": "university"
+                    }
+                }
+            ]
+        }
+
+        //地图初始化函数
+        function init() {
+            //初始化球体
+            initViewer();
+            //加载天地图
+            TDTLayerArr = addTDT();
+
+            // 加载控件
+            addControls()
+            //飞到指定视角
+            flyTo();
+            //初始化示例UI操作
+
+            // 加载geojson
+            addGeoJSONLayer();
+            getPrimitives()
+
+        }
+
+        //初始化球体
+        function initViewer() {
+            //构造三维视图类（视图容器div的id，三维视图设置参数）
+            viewer = new Cesium.Viewer(document.getElementById('mapgis-3d-viewer'), {
+                imageryProvider: false,
+                baseLayerPicker: false,
+                timeline: false,
+                infoBox: false,
+                navigationHelpButton: false,
+                fullscreenButton: false,
+                animation: false,
+                geocoder: false,
+                homeButton: false,
+                sceneModePicker: true
+
+            });
+            viewer.maximumZoomDistance = 8;
+            viewer.scene.postProcessStages.fxaa.enabled = true
+            // 去除logo
+            viewer.cesiumWidget.creditContainer.style.display = "none";
+
+
+        }
+
+        //加载天地图
+        function addTDT() {
+            let TDTLayer_img = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/img_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "img",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 18
+            }), { show: false });
+
+            let TDTLayer_cia = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/cia_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "cia",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 18
+            }),
+                { show: false });
+
+            let TDTLayer_ter = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/ter_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "ter",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 8
+            }),
+                { show: false });
+            let TDTLayer_cta = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/cta_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "cta",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 8
+            }),
+                { show: false });
+
+            let TDTLayer_vec = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/vec_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "vec",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 18
+            }));
+            let TDTLayer_cva = viewer.imageryLayers.addImageryProvider(new Cesium.WebMapTileServiceImageryProvider({
+                //天地图URL，开发token （请到天地图官网申请自己的开发token，自带token仅做功能验证随时可能失效）
+                url: "http://t0.tianditu.gov.cn/cva_w/wmts?tk=f581acc25f8c0a5453d4f5c4e87fc8ff",
+                //图层名称，vec：矢量底图、img：卫星影像底图、cva: 矢量注记图层（中文）、eva: 矢量注记图层（英文）、cia: 注记图层（中文）、eia: 注记图层（英文）、ter: 地形晕渲底图、cta: 注记（中文）、ibo: 全球国界
+                layer: "cva",
+                //瓦片样式
+                style: "default",
+                //比例尺
+                tileMatrixSetID: "w",
+                //请求格式
+                format: "tiles",
+                // 设置天地图瓦片级别（很关键）
+                maximumLevel: 18
+            }));
+
+            return [TDTLayer_vec, TDTLayer_cva, TDTLayer_img, TDTLayer_cia, TDTLayer_ter, TDTLayer_cta]
+        }
+
+        // 添加地图控件
+        function addControls() {
+
+            let optionsControl = {};
+            // 用于在使用重置导航重置地图视图时设置默认视图控制。接受的值是Cesium.Cartographic 和 Cesium.Rectangle.
+            optionsControl.defaultResetView = Cesium.Rectangle.fromDegrees(80, 22, 130, 50);
+            // 用于启用或禁用罗盘。true是启用罗盘，false是禁用罗盘。默认值为true。如果将选项设置为false，则罗盘将不会添加到地图中。
+            optionsControl.enableCompass = true;
+            // 用于启用或禁用缩放控件。true是启用，false是禁用。默认值为true。如果将选项设置为false，则缩放控件将不会添加到地图中。
+            optionsControl.enableZoomControls = true;
+            // 用于启用或禁用距离图例。true是启用，false是禁用。默认值为true。如果将选项设置为false，距离图例将不会添加到地图中。
+            optionsControl.enableDistanceLegend = true;
+            // 用于启用或禁用指南针外环。true是启用，false是禁用。默认值为true。如果将选项设置为false，则该环将可见但无效。
+            optionsControl.enableCompassOuterRing = true;
+
+            CesiumNavigation.umd(viewer, optionsControl);
+
+        }
+        //飞到指定视角
+        function flyTo() {
+            //飞到指定视角
+            viewer.camera.flyTo({
+                destination: Cesium.Cartesian3.fromDegrees(116.5258, 41.8054, 20000000)
+            });
+        }
+
+
+        // 加载geojson
+        function addGeoJSONLayer() {
+            // 加载GeoJSON数据源
+            Cesium.GeoJsonDataSource.load(schoolGeo, {}).then(function (dataSource) {
+
+                // 将数据源添加到地图中
+                viewer.dataSources.add(dataSource);
+                const entities = dataSource.entities.values;
+                console.log(dataSource)
+
+                entities.forEach(entity => {
+                    // 重置图片，图片大小，大小单位为米
+                    entity.billboard.image = '../asset/image/学校.png'
+                    entity.billboard.width = 40;
+                    entity.billboard.height = 40;
+                    entity.billboard.sizeInMeters = false;
+                })
+            }).otherwise(function (error) {
+                // 如果加载出错，输出错误信息
+                console.log(error);
+            });
+        }
+
+        function getSchoolPosition(school) {
+            for (var i = 0; i < viewer.dataSources.length; i++) {
+                var dataSource = viewer.dataSources.get(i);
+                // 如果是 GeoJSON 数据源
+                if (dataSource instanceof Cesium.GeoJsonDataSource) {
+                    // 获取数据源中的所有实体
+                    var entities = dataSource.entities.values;
+                    // 将所有实体添加到数组中
+                    for (var j = 0; j < entities.length; j++) {
+                        if (entities[j].properties.school._value == school) {
+                            return entities[j]
+                        }
+                    }
+
+                }
+            }
+        }
+        function flyToPos(school) {
+            switch (school) {
+                case 'primaryschool':
+                    viewer.flyTo(getSchoolPosition(school));
+                case 'juniorschool':
+                    viewer.flyTo(getSchoolPosition(school));
+                case 'seniorschool':
+                    viewer.flyTo(getSchoolPosition(school));
+                case 'university':
+                    viewer.flyTo(getSchoolPosition(school));
+            }
+        }
+
+    </script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        .bubbly-button {
+            width: 80px;
+            height: 40px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: 600;
+            background-color: rgb(239, 239, 239);
+            border: 0px;
+        }
+
+        .attribute-panel {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 350px;
+            height: 90vh;
+
+            border-radius: 10px;
+            z-index: 10;
+            display: none;
+        }
+
+        .attribute-box {
+            width: 100%;
+            padding: 10px 10px 10px 10px;
+            background: rgba(6, 48, 109, 0.7);
+            position: relative;
+            border-radius: 5px;
+            color: #fff;
+            z-index: 10;
+        }
+
+        .attribute-info {
+            margin-bottom: 10px;
+
+        }
+
+        .alltitle {
+            height: 20px;
+            font-size: 16px;
+            color: #fff;
+            line-height: 20px;
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 15px;
+        }
+
+        .alltitle:before {
+            position: absolute;
+            height: 20px;
+            width: 4px;
+            background: #49bcf7;
+            border-radius: 5px;
+            content: "";
+            left: 0;
+            top: 2px;
+            margin-top: -.1rem;
+        }
+
+        .school-box {
+            width: 300px;
+            height: auto;
+            padding: 10px 10px 10px 10px;
+            background: rgba(6, 48, 109, 0.7);
+            border-radius: 5px;
+            color: #fff;
+            position: absolute;
+            top: 8vh;
+            left: 1vw;
+            z-index: 10;
+
+        }
+
+        .layerTree {
+            position: absolute;
+            z-index: 10;
+            top: 2vh;
+            left: 1vw;
+
+        }
+
+        #layer-select {
+            width: 100px;
+            height: 30px;
+            border-radius: 4px;
+            background-color: rgba(6, 48, 109, 0.7);
+            color: white;
+            padding-left: 5px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body onload="init()">
+
+
+    <div id="mapgis-3d-viewer">
+    </div>
+
+    <div class="school-box">
+        <div class="alltitle">学校</div>
+        <table class="table-school">
+            <tr>
+                <th class="box">
+                    <span class="twister">小学</span>
+                </th>
+                <td class="box" onclick="flyToPos('primaryschool')">
+                    <table>
+                        <tr>
+                            <td>建工师二中</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th class="box">
+                    <span class="twister">初中</span>
+                </th>
+                <td class="box" onclick="flyToPos('juniorschool')">
+                    <table>
+                        <tr>
+                            <td>合肥市第五十中</td>
+                        </tr>
+
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th class="box">
+                    <span class="twister">高中</span>
+                </th>
+                <td class="box" onclick="flyToPos('seniorschool')">
+                    <table>
+                        <tr>
+                            <td>合肥市第一中学</td>
+                        </tr>
+
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th class="box">
+                    <span class="twister">大学</span>
+                </th>
+                <td class="box" onclick="flyToPos('university')">
+                    <table>
+                        <tr>
+                            <td>中国地质大学(武汉)</td>
+                        </tr>
+
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="layerTree">
+        <form class="layerTree-form" action="">
+            <div class="layerTree-panel" style="border-bottom: none">
+                <!-- <label class="layerTree-panel-label">地图类型</label> -->
+                <div class="layerTree-input-select">
+                    <select id="layer-select" name="layer-select" lay-filter="layer-select">
+                        <option value="vec" selected>矢量地图</option>
+                        <option value="img">卫星影像</option>
+                        <option value="ter">地形地图</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script>
+        $('#layer-select').change(function () {
+            let selectedValue = $(this).val();
+            // [TDTLayer_vec, TDTLayer_cva, TDTLayer_img, TDTLayer_cia,TDTLayer_ter,TDTLayer_cta]
+            switch (selectedValue) {
+                case 'vec':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "vec" && TDTLayerArr[i]._imageryProvider._layer != "cva") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+
+                    break
+                case 'img':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "img" && TDTLayerArr[i]._imageryProvider._layer != "cia") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+                    break
+                case 'ter':
+                    for (let i = 0; i < TDTLayerArr.length; i++) {
+
+                        if (TDTLayerArr[i]._imageryProvider._layer != "ter" && TDTLayerArr[i]._imageryProvider._layer != "cta") {
+                            TDTLayerArr[i].show = false
+                        }
+                        else {
+                            TDTLayerArr[i].show = true
+                        }
+                    }
+                    break
+
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

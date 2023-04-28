@@ -1,0 +1,118 @@
+.but0 {
+    position: absolute;
+    top: 20px;
+    right:  200px;
+    padding: 10px;
+    font-size: 16px;
+    --color: #ef6eae;
+    --hover: #ef8f6e;
+  }
+  .but1{
+    position: absolute;
+    top: 20px;
+    right:  140px;
+    padding: 10px;
+    font-size: 16px;
+    --color: #ef6eae;
+    --hover: #ef8f6e;
+  }
+  .but2{
+    position: absolute;
+    top: 20px;
+    right:  80px;
+    padding: 10px;
+    font-size: 16px;
+    --color: #ef6eae;
+    --hover: #ef8f6e;
+  }
+  .but3{
+    position: absolute;
+    top: 20px;
+    right:  20px;
+    padding: 10px;
+    font-size: 16px;
+    --color: #ef6eae;
+    --hover: #ef8f6e;
+  }
+
+.but0:hover,
+.but0:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes but0 {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+
+.but1:hover,
+.but1:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes but1 {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+.but2:hover,
+.but2:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes but2 {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+.but3:hover,
+.but3:focus {
+  animation: pulse 1s;
+  box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes but3 {
+  0% {
+    box-shadow: 0 0 0 0 var(--hover);
+  }
+}
+
+
+
+
+button {
+  color: var(--color);
+  transition: 0.25s;
+}
+
+button:hover, button:focus {
+  border-color: var(--hover);
+  color: #fff;
+}
+
+
+
+button {
+  background: rgb(46, 45, 45);
+  border: 2px solid;
+  font: inherit;
+  line-height: 1;
+  margin: 0.5em;
+  padding: 1em 2em;
+}
+
+h1 {
+  font-weight: 400;
+}
+
+code {
+  color: #e4cb58;
+  font: inherit;
+}

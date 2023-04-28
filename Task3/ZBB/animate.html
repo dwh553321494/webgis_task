@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <meta content='always' name='referrer'>
+    <title></title>
+    <link href='ol.css ' rel='stylesheet' type='text/css'/>
+    <script type='text/javascript' src='ol.js' charset='utf-8'></script>
+    <style type="text/css">
+        #menu
+        {
+            position:absolute;
+            bottom :10px;
+            z-index:2000;
+        }
+    </style>
+    <script type="text/javascript">
+       
+        window.onload = function () {
+            //实例化地图视图对象
+            var view = new ol.View({
+                center: [12950000, 4860000],
+                zoom:11
+            });
+ 
+            //实例化地图对象
+            var map = new ol.Map({
+                target: 'map',           
+            //地图容器中加载的图层
+            layers: [
+                //加载瓦片图层数据
+                new ol.layer.Tile({
+                    title: "天地图矢量图层",
+                    source: new ol.source.XYZ({
+                        url: "http://t0.tianditu.com/DataServer?T=vec_w&x={x}&y={y}&l={z}&tk=52d9247f9895d65017a9d20dc0f23b39",                        
+                        wrapX: false
+                    })                    
+                }),
+                new ol.layer.Tile({
+                    title: "天地图矢量图层注记",
+                    source: new ol.source.XYZ({
+                        url: "http://t0.tianditu.com/DataServer?T=cva_w&x={x}&y={y}&l={z}&tk=52d9247f9895d65017a9d20dc0f23b39",                        
+                        wrapX: false
+                    })                    
+                }),
+            ],
+            loadTilesWhileAnimating:true,
+            view:view
+            });
+           
+ 
+            //定义不同城市的地理位置坐标
+            var primary = ol.proj.fromLonLat([110.788798, 32.666295]);
+            var junior = ol.proj.fromLonLat([110.807539, 32.675647]);
+            var senior = ol.proj.fromLonLat([112.127018, 32.093448]);
+            var university = ol.proj.fromLonLat([114.623561, 30.463748]);
+
+ 
+            //旋转定位到小学
+            document.getElementById('spin').onclick = function () {
+                var center=view.getCenter();
+                view.animate(
+                    {
+                        center:[
+                            center[0]+(primary[0]-primary[0])/2,
+                            center[1]+(primary[1]-primary[1])/2
+                        ],
+                        rotation:Math.PI,
+                        easing:ol.easing.easeIn
+                    },
+                    {
+                        center:primary,
+                        rotation:2*Math.PI,
+                        easing:ol.easing.easeOut
+                    });
+            };
+ 
+            //弹性定位到初中
+            document.getElementById('elastic').onclick = function () {
+                view.animate({
+                    center:junior,
+                    duration:2000,
+                    easing:elastic
+                });
+            };
+ 
+            //反弹定位到高中
+            document.getElementById('bounce').onclick = function () {
+                view.animate({
+                    center:senior,
+                    duration:2000,
+                    easing:bounce
+                });
+            };
+ 
+            //自旋定位到大学
+            document.getElementById('rotate').onclick = function () {
+                var rotation = view.getRotation();
+                view.animate(
+                    {
+                        rotation:rotation+Math.PI,
+                        anchor:university,
+                        easing:ol.easing.easeIn
+                    },
+                    {
+                        rotation:rotation+2*Math.PI,
+                        anchor:university,
+                        easing:ol.easing.easeOut
+                    });
+            };
+        
+      
+        };
+ 
+        //弹性值
+        function elastic(t) {
+            return Math.pow(2, -10 * t) * Math.sin((t - 0.075) * (2 * Math.PI) / 0.3) + 1;
+        }
+ 
+        //反弹值
+        function bounce(t) {
+            var s = 7.5625, p = 2.75, l;
+            if (t < (1 / p)) {
+                l = s * t * t;
+            } else {
+                if (t < (2 / p)) {
+                    t -= (1.5 / p);
+                    l = s * t * t + 0.75;
+                } else {
+                    if (t < (2.5 / p)) {
+                        t -= (2.25 / p);
+                        l = s * t * t + 0.9375;
+                    } else {
+                        t -= (2.625 / p);
+                        l = s * t * t + 0.984375;
+                    }
+                }
+            }
+            return l;
+        }
+    </script>
+</head>
+<body>
+    <div id="map">
+    </div>
+    <div class="ToolLib">
+            <button class="ButtonLib" id="spin">旋转定位到十堰东风22小学</button>
+            <button class="ButtonLib" id="elastic">弹性定位到十堰市东风七中</button>
+            <button class="ButtonLib" id="bounce">反弹定位到襄阳五中</button>
+            <button class="ButtonLib" id="rotate">自旋定位到中国地质大学（武汉）</button>
+    </div>
+
+
+</body>
+</html>

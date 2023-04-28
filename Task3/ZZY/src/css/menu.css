@@ -1,0 +1,136 @@
+
+
+.tool-box {
+    position: absolute;
+    top:35%;
+    left: 5px;
+    border-radius: 10px;
+   /* background-color: antiquewhite; */
+
+}
+
+.tool-container {
+   position: relative;
+   width: 300px;
+   height: 80px;
+  
+}
+
+.tool-head{
+
+    width: 50px;
+    height: 50px;
+    background-color:rgba(6, 48, 109, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border:white solid ;
+    border-width: 3px;
+}
+
+
+.tool-head i:hover {
+    transform: scale(1.1);
+}
+.tool-menu-display{
+    display: none;
+}
+.tool-menu {
+    background:rgba(6, 48, 109, 1);
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+  
+    transform: translate(60px, -58px);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border:white solid ;
+    border-width: 3px;
+
+}
+.tool-menu i:hover {
+    transform: scale(1.1);
+}
+
+
+/* 选择 */
+.choose-box {
+    position: absolute;
+    top: 42%;
+    left: 5px;
+    border-radius: 10px;
+   /* background-color: antiquewhite; */
+
+}
+
+.choose-container {
+   position: relative;
+   width: 300px;
+   height: 80px;
+  
+}
+
+.choose-head{
+
+    width: 50px;
+    height: 50px;
+    background-color:rgba(6, 48, 109, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border:white solid ;
+    border-width: 3px;
+}
+
+
+.choose-head i:hover {
+    transform: scale(1.1);
+}
+
+.choose-menu-display{
+    display: none;
+}
+.choose-menu {
+    background:rgba(6, 48, 109, 1);
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+  
+    transform: translate(60px, -58px);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    border:white solid ;
+    border-width: 3px;
+
+}
+.choose-menu i:hover {
+    transform: scale(1.1);
+}
+
+
+
+.build3-box{
+    position: absolute;
+    top: 49%;
+    left: 5px;
+    border-radius: 10px;
+}
+.build3-head{
+    width: 50px;
+    height: 50px;
+    background-color:rgba(6, 48, 109, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border:white solid ;
+    border-width: 3px;
+}
